@@ -7,7 +7,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
+    // entry point
     index: "./src/js/index.js",
+    // different pages
     // homePage: "./src/js/homePage.js",
     // shopPage: "./src/js/shopPage.js",
     // contactPage: "./src/js/contactPage.js",

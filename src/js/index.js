@@ -1,10 +1,14 @@
 // Import our custom CSS
 import "../scss/styles.scss";
-
 // Import all of Bootstrap's JS
 import * as bootstrap from "bootstrap";
 
-// import "./style.scss";
+// modules
+// module for todos that contains all properties
+
+// user interface module > imports other modules to divide UI into components
+
+// pages modules > displays all todos based on page context
 import homePage from "./homePage";
 import shopPage from "./shopPage";
 import contactPage from "./contactPage";

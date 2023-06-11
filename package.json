@@ -4,7 +4,7 @@
   "description": "Create a todo list to keep track of your tasks.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack serve --open",
     "build": "webpack build --mode=production"
   },
@@ -12,9 +12,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
     "autoprefixer": "^10.4.14",
+    "babel-jest": "^29.5.0",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.1",
+    "jest": "^29.5.0",
     "postcss-loader": "^7.3.2",
     "sass": "^1.63.2",
     "sass-loader": "^13.3.1",

@@ -1,8 +1,8 @@
 function comparePriority(a, b) {
-  if ( a.priority > b.priority){
+  if (a.priority > b.priority) {
     return -1;
   }
-  if ( a.priority < b.priority){
+  if (a.priority < b.priority) {
     return 1;
   }
   return 0;
@@ -21,14 +21,15 @@ const createProject = (title) => {
   // sort toDos
   const sortToDos = () => toDos.sort(comparePriority);
 
-  // how to find a toDo?
-  
-
   // delete a todo
+  const deleteToDo = (index) => toDos.splice(index, 1);
 
   // change a toDo property
+  const updateToDo = (index, toDo) => {
+    project[index] = toDo;
+  }
 
-  return { title, toDos, addToDo, getToDos, sortToDos };
+  return { title, toDos, addToDo, getToDos, sortToDos, deleteToDo, updateToDo };
 };
 
 export default createProject;

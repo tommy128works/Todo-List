@@ -1,12 +1,16 @@
 import createProject from "../js/createProject";
+import createToDo from "../js/createToDo";
 
-const tempTitle = "tempTitle";
-const tempDesc = "tempDesc";
-const tempDueDate = "tempDueDate";
-const tempNotes = "tempNotes";
+test("add toDo to project", () => {
+  let project = createProject("project");
+  let toDoOne = createToDo("toDoOne", "descriptionOne", null,"notesOne", false, 1);
+  let toDoTwo = createToDo("toDoTwo", "descriptionTwo", null,"notesTwo", false, 2);
+  let toDoThree = createToDo("toDoThree", "descriptionThree", null,"notesThree", false, 3);
 
-test("project initial array property", () => {
+  project.addToDo(toDoOne);
+  project.addToDo(toDoTwo);
+  project.addToDo(toDoThree);
+  project.sortToDos();
 
-  let project = createProject(tempTitle);
-  expect(project.toDos).toEqual(["hi"]);
+  expect(project.getToDos()).toEqual([toDoThree, toDoTwo, toDoOne]);
 });

@@ -27,7 +27,7 @@ const createProject = (title) => {
   // change a toDo property
   const updateToDo = (index, toDo) => {
     project[index] = toDo;
-  }
+  };
 
   return { title, toDos, addToDo, getToDos, sortToDos, deleteToDo, updateToDo };
 };

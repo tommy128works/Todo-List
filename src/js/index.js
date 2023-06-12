@@ -9,14 +9,16 @@ import * as bootstrap from "bootstrap";
 // user interface module > imports other modules to divide UI into components
 
 // pages modules > displays all todos based on page context
-import homePage from "./homePage";
-import shopPage from "./shopPage";
-import contactPage from "./contactPage";
+// import homePage from "./homePage";
+// import shopPage from "./shopPage";
+// import contactPage from "./contactPage";
 
-// create header tabs
+// header with title
 let div = document.createElement("div");
 div.classList.add("header");
 
+// buttons adjacent to header section
+// buttons container needs to respond and wrap for mobile view
 let button = document.createElement("button");
 button.textContent = "Home";
 button.setAttribute("id", "home-btn");
@@ -27,39 +29,7 @@ button.textContent = "Shop";
 button.setAttribute("id", "shop-btn");
 div.appendChild(button);
 
-button = document.createElement("button");
-button.textContent = "Contact";
-button.setAttribute("id", "contact-btn");
-div.appendChild(button);
+// create eventHandlers to load different filters
+// create module for each page
 
-document.body.appendChild(div);
-
-div = document.createElement("div");
-div.setAttribute("id", "content");
-document.body.appendChild(div);
-const content = document.getElementById("content");
-content.appendChild(homePage());
-
-const delContent = () => {
-  while (content.firstChild) {
-    content.removeChild(content.firstChild);
-  }
-};
-
-const homeBtn = document.getElementById("home-btn");
-homeBtn.addEventListener("click", () => {
-  delContent();
-  content.appendChild(homePage());
-});
-
-const shopBtn = document.getElementById("shop-btn");
-shopBtn.addEventListener("click", () => {
-  delContent();
-  content.appendChild(shopPage());
-});
-
-const contactBtn = document.getElementById("contact-btn");
-contactBtn.addEventListener("click", () => {
-  delContent();
-  content.appendChild(contactPage());
-});
+// create form inputs required > add project, add todo, edit todo (same as add)

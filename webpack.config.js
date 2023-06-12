@@ -22,8 +22,8 @@ module.exports = {
   devtool: "inline-source-map",
   devServer: {
     static: path.resolve(__dirname, 'dist'),
-    port: 8080,
-    hot: true,
+    hot: false,
+    liveReload: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

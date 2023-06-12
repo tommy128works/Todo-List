@@ -14,20 +14,32 @@ import * as bootstrap from "bootstrap";
 // import contactPage from "./contactPage";
 
 // header with title
+let nav = document.createElement("nav");
+nav.classList.add("navbar", "bg-dark", "large-font");
+nav.setAttribute("data-bs-theme", "dark");
 let div = document.createElement("div");
-div.classList.add("header");
+div.classList.add("container-fluid");
+
+let btn = document.createElement("btn");
+let span = document.createElement("span");
+span.classList.add("navbar-toggler-icon");
+btn.appendChild(span);
+div.appendChild(btn);
+
+span = document.createElement("span");
+span.classList.add("navbar-brand", "large-font");
+span.textContent = "Todo List";
+div.appendChild(span);
+
+nav.appendChild(div);
+document.body.appendChild(nav);
+
+
+
 
 // buttons adjacent to header section
 // buttons container needs to respond and wrap for mobile view
-let button = document.createElement("button");
-button.textContent = "Home";
-button.setAttribute("id", "home-btn");
-div.appendChild(button);
 
-button = document.createElement("button");
-button.textContent = "Shop";
-button.setAttribute("id", "shop-btn");
-div.appendChild(button);
 
 // create eventHandlers to load different filters
 // create module for each page

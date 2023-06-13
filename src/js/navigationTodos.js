@@ -1,7 +1,6 @@
-// buttons: All Tasks, Today, Next 7 Days, 
 // buttons container needs to respond and wrap for mobile view
 
-const navigationButtons = () => {
+const navigationTodos = () => {
   let nav = document.createElement("nav");
   nav.classList.add("btn-group-vertical", "large-font");
   nav.setAttribute("role", "group");
@@ -31,4 +30,4 @@ const navigationButtons = () => {
   return nav;
 };
 
-export default navigationButtons;
+export default navigationTodos;

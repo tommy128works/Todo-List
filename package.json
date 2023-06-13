@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "webpack serve --open",
-    "build": "webpack build --mode=production"
+    "build": "webpack build --mode=production",
+    "w": "npx prettier --write src"
   },
   "keywords": [],
   "author": "",

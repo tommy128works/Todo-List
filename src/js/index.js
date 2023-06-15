@@ -8,13 +8,12 @@ import * as bootstrap from "bootstrap";
 import header from "./header";
 import navigationTodos from "./navigationTodos";
 import navigationProjects from "./navigationProjects";
+import contentSection from "./contentSection";
 
 document.body.appendChild(header());
-
-// need to create container for navigation items 
-// maybe make module for this purpose
 document.body.appendChild(navigationTodos());
 document.body.appendChild(navigationProjects());
+document.body.appendChild(contentSection());
 
 
 // create eventHandlers to load different filters

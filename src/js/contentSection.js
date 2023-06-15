@@ -1,16 +1,9 @@
-// for now, add Project heading and 1 dummy project for UI
-// maybe dummy project is default project
-
-const navigationProjects = () => {
+// make dummy Title 
+// make one dummy Task
+const contentSection = () => {
   let container = document.createElement("div");
-  container.classList.add("btn-group-vertical");
-  container.setAttribute("role", "group");
-  container.setAttribute("aria-label", "Vertical button group");
-
-  let heading = document.createElement("h1");
-  heading.classList.add("medium-font", "underline");
-  heading.textContent = "Projects";
-  container.appendChild(heading);
+  container.classList.add("large-font");
+  container.textContent = "All Tasks";
 
   let btn = document.createElement("btn");
   btn.classList.add("btn", "btn-secondary", "btn-primary", "project");
@@ -21,7 +14,7 @@ const navigationProjects = () => {
   span.textContent = "drag_indicator";
   btn.appendChild(span);
   span = document.createElement("span");
-  span.classList.add("project-name");
+  span.classList.add("project-title");
   span.textContent = "Project ONE";
   btn.appendChild(span);
   span = document.createElement("span");
@@ -39,7 +32,7 @@ const navigationProjects = () => {
   span.textContent = "add_circle";
   btn.appendChild(span);
   span = document.createElement("span");
-  span.classList.add("project-name");
+  span.classList.add("project-title");
   span.textContent = "Add Project";
   btn.appendChild(span);
   container.appendChild(btn);
@@ -47,4 +40,4 @@ const navigationProjects = () => {
   return container;
 };
 
-export default navigationProjects;
+export default contentSection;

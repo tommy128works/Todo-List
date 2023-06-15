@@ -13,7 +13,7 @@ const navigationTodos = () => {
   span.textContent = "inbox";
   btn.appendChild(span);
   span = document.createElement("span");
-  span.classList.add("project-title");
+  span.classList.add("project-name");
   span.textContent = "All Tasks";
   btn.appendChild(span);
   container.appendChild(btn);
@@ -27,7 +27,7 @@ const navigationTodos = () => {
   span.textContent = "today";
   btn.appendChild(span);
   span = document.createElement("span");
-  span.classList.add("project-title");
+  span.classList.add("project-name");
   span.textContent = "Today";
   btn.appendChild(span);
   container.appendChild(btn);
@@ -41,7 +41,7 @@ const navigationTodos = () => {
   span.textContent = "date_range";
   btn.appendChild(span);
   span = document.createElement("span");
-  span.classList.add("project-title");
+  span.classList.add("project-name");
   span.textContent = "Next 7 Days";
   btn.appendChild(span);
   container.appendChild(btn);

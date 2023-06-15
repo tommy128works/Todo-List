@@ -1,33 +1,31 @@
-// buttons container needs to respond and wrap for mobile view
-
 const navigationTodos = () => {
-  let nav = document.createElement("nav");
-  nav.classList.add("btn-group-vertical", "large-font");
-  nav.setAttribute("role", "group");
-  nav.setAttribute("aria-label", "Vertical button group");
+  let container = document.createElement("div");
+  container.classList.add("btn-group-vertical");
+  container.setAttribute("role", "group");
+  container.setAttribute("aria-label", "Vertical button group");
 
   let btn = document.createElement("btn");
   btn.classList.add("btn", "btn-secondary", "btn-primary");
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");
   btn.textContent = "All Tasks";
-  nav.appendChild(btn);
+  container.appendChild(btn);
 
   btn = document.createElement("btn");
   btn.classList.add("btn", "btn-secondary", "btn-primary");
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");
   btn.textContent = "Today";
-  nav.appendChild(btn);
+  container.appendChild(btn);
 
   btn = document.createElement("btn");
   btn.classList.add("btn", "btn-secondary", "btn-primary");
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");
   btn.textContent = "Next 7 Days";
-  nav.appendChild(btn);
+  container.appendChild(btn);
   
-  return nav;
+  return container;
 };
 
 export default navigationTodos;

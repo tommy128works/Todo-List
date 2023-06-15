@@ -5,24 +5,45 @@ const navigationTodos = () => {
   container.setAttribute("aria-label", "Vertical button group");
 
   let btn = document.createElement("btn");
-  btn.classList.add("btn", "btn-secondary", "btn-primary");
+  btn.classList.add("btn", "btn-secondary", "btn-primary", "project");
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");
-  btn.textContent = "All Tasks";
+  let span = document.createElement("span");
+  span.classList.add("material-symbols-outlined");
+  span.textContent = "inbox";
+  btn.appendChild(span);
+  span = document.createElement("span");
+  span.classList.add("project-title");
+  span.textContent = "All Tasks";
+  btn.appendChild(span);
   container.appendChild(btn);
 
   btn = document.createElement("btn");
-  btn.classList.add("btn", "btn-secondary", "btn-primary");
+  btn.classList.add("btn", "btn-secondary", "btn-primary", "project");
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");
-  btn.textContent = "Today";
+  span = document.createElement("span");
+  span.classList.add("material-symbols-outlined");
+  span.textContent = "today";
+  btn.appendChild(span);
+  span = document.createElement("span");
+  span.classList.add("project-title");
+  span.textContent = "Today";
+  btn.appendChild(span);
   container.appendChild(btn);
 
   btn = document.createElement("btn");
-  btn.classList.add("btn", "btn-secondary", "btn-primary");
+  btn.classList.add("btn", "btn-secondary", "btn-primary", "project");
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");
-  btn.textContent = "Next 7 Days";
+  span = document.createElement("span");
+  span.classList.add("material-symbols-outlined");
+  span.textContent = "date_range";
+  btn.appendChild(span);
+  span = document.createElement("span");
+  span.classList.add("project-title");
+  span.textContent = "Next 7 Days";
+  btn.appendChild(span);
   container.appendChild(btn);
   
   return container;

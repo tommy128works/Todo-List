@@ -18,7 +18,7 @@ const navigationProjects = () => {
   btn.setAttribute("type", "button");
   let span = document.createElement("span");
   span.classList.add("material-symbols-outlined");
-  span.textContent = "menu";
+  span.textContent = "drag_indicator";
   btn.appendChild(span);
   span = document.createElement("span");
   span.classList.add("project-title");

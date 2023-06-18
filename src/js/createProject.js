@@ -15,8 +15,13 @@ const createProject = (title) => {
   const addToDo = (toDo) => {
     toDos.push(toDo);
   };
-  // return all todo
-  const getToDos = () => toDos;
+
+  // add all todos
+  const addToDos = (allToDos) => {
+    for (let i = 0; i < allToDos.length; i++) {
+      toDos.push(allToDos[i]);
+    }
+  }
 
   // sort toDos
   const sortToDos = () => toDos.sort(comparePriority);
@@ -29,7 +34,7 @@ const createProject = (title) => {
     project[index] = toDo;
   };
 
-  return { title, toDos, addToDo, getToDos, sortToDos, deleteToDo, updateToDo };
+  return { title, toDos, addToDo, addToDos, sortToDos, deleteToDo, updateToDo };
 };
 
 export default createProject;

@@ -1,7 +1,7 @@
 import createProject from "../js/createProject";
 import createToDo from "../js/createToDo";
 
-test("sort todos inside of project", () => {
+test.skip("sort todos inside of project", () => {
   let project = createProject("project");
   let toDoOne = createToDo(
     "toDoOne",

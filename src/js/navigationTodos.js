@@ -45,7 +45,7 @@ const navigationTodos = () => {
   span.textContent = "Next 7 Days";
   btn.appendChild(span);
   container.appendChild(btn);
-  
+
   return container;
 };
 

@@ -1,4 +1,4 @@
-// make dummy Title 
+// make dummy Title
 // make one dummy Task
 const contentSection = () => {
   let container = document.createElement("div");
@@ -36,7 +36,7 @@ const contentSection = () => {
   span.textContent = "Add Project";
   btn.appendChild(span);
   container.appendChild(btn);
-  
+
   return container;
 };
 

@@ -43,7 +43,7 @@ const navigationProjects = () => {
   span.textContent = "Add Project";
   btn.appendChild(span);
   container.appendChild(btn);
-  
+
   return container;
 };
 

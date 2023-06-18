@@ -26,12 +26,6 @@ function storageAvailable(type) {
   }
 }
 
-
-
-
-
-
-
 // test if storage has been populated
 // (simpled if statement checking if localStorage is empty)
 // if yes, display existing projects on default page

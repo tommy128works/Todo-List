@@ -21,7 +21,7 @@ const createProject = (title) => {
     for (let i = 0; i < allToDos.length; i++) {
       toDos.push(allToDos[i]);
     }
-  }
+  };
 
   // sort toDos
   const sortToDos = () => toDos.sort(comparePriority);

@@ -1,8 +1,6 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
-// Google icons
-
 body {
   margin: 0;
   background-color: #dddddd;
@@ -24,14 +22,40 @@ body {
   border-bottom: 2px solid black;
 }
 
-.project {
+.main-container {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
+
 }
 
-.project-name {
-  width: 20vw;
-  text-align: left;
+.sidebar-section {
+  display: flex;
+  width: 30vw; 
+}
+
+.sidebar-item {
+  display: flex;
+  gap: 10px;
+  margin: 5px;
+}
+
+.btn-group-vertical {
+  width: 95%;
+}
+
+
+@media (max-width: 600px) {
+  $content-width: 95vw; 
+
+  .main-container {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .sidebar-section {
+    width: $content-width;
+  }
+
+  .content-section {
+    width: $content-width;
+  }
 }

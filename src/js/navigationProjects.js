@@ -3,9 +3,7 @@
 
 const navigationProjects = () => {
   let container = document.createElement("div");
-  container.classList.add("btn-group-vertical");
   container.setAttribute("role", "group");
-  container.setAttribute("aria-label", "Vertical button group");
 
   let heading = document.createElement("h1");
   heading.classList.add("medium-font", "underline");

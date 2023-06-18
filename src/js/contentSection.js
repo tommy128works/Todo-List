@@ -2,7 +2,7 @@
 // make one dummy Task
 const contentSection = () => {
   let container = document.createElement("div");
-  container.classList.add("large-font");
+  container.classList.add("large-font", "content-section");
   container.textContent = "All Tasks";
 
   let btn = document.createElement("btn");

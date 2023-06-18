@@ -2,6 +2,8 @@
 // This is because Jest testing does not simulate the API.
 
 import storageAvailable from "../js/dataStorage";
+import createToDo from "./createToDo";
+import createProject from "./createProject";
 
 // check web storage api availability on browser
 // if no, display a warning indicating data will not be saved because..

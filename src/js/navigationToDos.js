@@ -10,6 +10,7 @@ const createButton = (title, symbol) => {
   btn.appendChild(span);
 
   span = document.createElement("span");
+  span.classList.add("sidebar-text");
   span.textContent = title;
   btn.appendChild(span);
 

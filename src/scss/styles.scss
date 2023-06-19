@@ -47,6 +47,11 @@ body {
   width: 95%;
 }
 
+.sidebar-text {
+  flex: 1;
+  text-align: left;
+}
+
 
 @media (max-width: 600px) {
   $content-width: 95vw; 

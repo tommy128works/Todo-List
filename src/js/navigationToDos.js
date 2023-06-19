@@ -1,4 +1,4 @@
-const createButton = (title) => {
+const createButton = (title, symbol) => {
   let btn = document.createElement("btn");
   btn.classList.add("btn", "btn-secondary", "btn-primary", "sidebar-item");
   btn.classList.toggle("btn-primary");
@@ -6,7 +6,7 @@ const createButton = (title) => {
 
   let span = document.createElement("span");
   span.classList.add("material-symbols-outlined");
-  span.textContent = "inbox";
+  span.textContent = symbol;
   btn.appendChild(span);
 
   span = document.createElement("span");
@@ -20,9 +20,9 @@ const navigationToDos = () => {
   let container = document.createElement("div");
   container.classList.add("btn-group-vertical");
 
-  container.appendChild(createButton("All Tasks"));
-  container.appendChild(createButton("Today"));
-  container.appendChild(createButton("Next 7 Days"));
+  container.appendChild(createButton("All Tasks", "inbox"));
+  container.appendChild(createButton("Today", "today"));
+  container.appendChild(createButton("Next 7 Days", "date_range"));
 
   return container;
 };

@@ -1,9 +1,11 @@
 // for now, add Project heading and 1 dummy project for UI
 // maybe dummy project is default project
 
+
+
 const navigationProjects = () => {
   let container = document.createElement("div");
-  container.setAttribute("role", "group");
+  container.classList.add("btn-group-vertical");
 
   let heading = document.createElement("h1");
   heading.classList.add("medium-font", "underline");

@@ -19,7 +19,7 @@ let mainContainer = document.createElement("div");
 let sideBarContainer = document.createElement("div");
 sideBarContainer.classList.add("sidebar-section");
 sideBarContainer.appendChild(navigationToDos());
-// sideBarContainer.appendChild(navigationProjects());
+sideBarContainer.appendChild(navigationProjects());
 
 
 mainContainer.classList.add("main-container");

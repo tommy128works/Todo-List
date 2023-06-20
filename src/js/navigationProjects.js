@@ -23,7 +23,7 @@ const createButton = (title) => {
   btn.appendChild(span);
 
   return btn;
-}
+};
 
 const createAddButton = () => {
   let btn = document.createElement("btn");
@@ -39,9 +39,9 @@ const createAddButton = () => {
   span = document.createElement("span");
   span.textContent = "Add Project";
   btn.appendChild(span);
-  
+
   return btn;
-}
+};
 
 const navigationProjects = () => {
   let container = document.createElement("div");

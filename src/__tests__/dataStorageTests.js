@@ -50,4 +50,4 @@ function testAddProject() {
   console.log(retrievedProject);
 }
 
-export {testAvailability, testAddToDo, testAddProject}
+export { testAvailability, testAddToDo, testAddProject };

@@ -28,12 +28,11 @@ body {
 
 .main-container {
   display: flex;
-
 }
 
 .sidebar-section {
   display: flex;
-  width: 30vw; 
+  width: 30vw;
   flex-direction: column;
 }
 
@@ -52,9 +51,8 @@ body {
   text-align: left;
 }
 
-
 @media (max-width: 600px) {
-  $content-width: 95vw; 
+  $content-width: 95vw;
 
   .main-container {
     flex-wrap: wrap;

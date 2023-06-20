@@ -15,7 +15,7 @@ const createButton = (title, symbol) => {
   btn.appendChild(span);
 
   return btn;
-}
+};
 
 const navigationToDos = () => {
   let container = document.createElement("div");

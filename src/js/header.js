@@ -1,3 +1,28 @@
+const addToggleSidebarEventHandler = () => {
+  let btn = document.getElementById("toggleSidebarButton");
+
+  btn.addEventListener("click", (event) => {
+    const sidebar = document.getElementById("sidebar");
+
+    if (sidebar.style.display === "none") {
+      sidebar.style.display = "block";
+    } else {
+      sidebar.style.display = "none";
+    }
+  });
+};
+
+const createTogglerButton = () => {
+  let btn = document.createElement("btn");
+  btn.setAttribute("type", "button");
+  let span = document.createElement("span");
+  span.classList.add("navbar-toggler-icon");
+  btn.appendChild(span);
+  btn.setAttribute("id", "toggleSidebarButton");
+
+  return btn;
+};
+
 const header = () => {
   let header = document.createElement("header");
   header.classList.add("navbar", "bg-dark", "large-font");
@@ -5,13 +30,9 @@ const header = () => {
   let div = document.createElement("div");
   div.classList.add("container-fluid");
 
-  let btn = document.createElement("btn");
-  let span = document.createElement("span");
-  span.classList.add("navbar-toggler-icon");
-  btn.appendChild(span);
-  div.appendChild(btn);
+  div.appendChild(createTogglerButton());
 
-  span = document.createElement("span");
+  let span = document.createElement("span");
   span.classList.add("navbar-brand", "large-font");
   span.textContent = "Todo List";
   div.appendChild(span);
@@ -20,4 +41,4 @@ const header = () => {
   return header;
 };
 
-export default header;
+export { header, addToggleSidebarEventHandler };

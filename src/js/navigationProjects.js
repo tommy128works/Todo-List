@@ -58,14 +58,21 @@ const createAddProjectForm = () => {
   input.setAttribute("id", "project_name");
   form.appendChild(input);
 
+  let btnsContainer = document.createElement("div");
+  btnsContainer.classList.add("btns-container");
+
   let addBtn = document.createElement("button");
   addBtn.setAttribute("type", "submit");
   addBtn.textContent = "Submit";
-  form.appendChild(addBtn);
+  addBtn.classList.add("btn", "btn-success");
+  btnsContainer.appendChild(addBtn);
 
   let cancelBtn = document.createElement("button");
   cancelBtn.textContent = "Cancel";
-  form.appendChild(cancelBtn);
+  cancelBtn.classList.add("btn", "btn-danger");
+  btnsContainer.appendChild(cancelBtn);
+
+  form.appendChild(btnsContainer);
 
   return form;
 }

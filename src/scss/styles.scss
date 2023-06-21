@@ -79,6 +79,21 @@ footer {
 
 .sidebar-form {
   margin: 5px;
+
+  label {
+    font-weight: bold;
+  }
+}
+
+.btns-container {
+  display: flex;
+  gap: 5px;
+  margin: 5px;
+  justify-content: center;
+
+  button {
+    flex: 1;
+  }
 }
 
 

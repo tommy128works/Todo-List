@@ -15,6 +15,14 @@ body {
   margin: 5px;
 }
 
+.small-font {
+  font-size: 1rem;
+}
+
+.smallest-font {
+  font-size: 0.75rem;
+}
+
 .btn-primary {
   font-weight: bold;
 }
@@ -49,6 +57,24 @@ body {
 .sidebar-text {
   flex: 1;
   text-align: left;
+}
+
+.content-section {
+  flex: 1;
+}
+
+.task-item {
+  display: flex;
+}
+
+.task-item-text {
+  flex: 1;
+}
+
+.add-new-task-btn {
+  display: flex;
+  gap: 10px;
+  margin: 20px;
 }
 
 @media (max-width: 600px) {

@@ -4,6 +4,23 @@
 body {
   margin: 0;
   background-color: #dddddd;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+footer {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icon {
+  height: 1.5rem;
+  width: auto;
+  color: white;
+  margin: 5px;
 }
 
 .large-font {
@@ -36,6 +53,7 @@ body {
 
 .main-container {
   display: flex;
+  flex: 1;
 }
 
 .sidebar-section {

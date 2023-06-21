@@ -50,7 +50,7 @@ const createTaskItem = (title, description, date, priority) => {
 };
 
 const createAddTaskButton = () => {
-  let btn = document.createElement("btn");
+  let btn = document.createElement("button");
   btn.classList.add("btn", "btn-secondary", "add-new-task-btn");
   btn.setAttribute("type", "button");
   

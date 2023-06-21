@@ -15,22 +15,24 @@ import contentSection from "./contentSection";
 import footer from "./footer";
 
 document.body.appendChild(header());
+
 let mainContainer = document.createElement("div");
 mainContainer.classList.add("main-container");
+
 let sideBarContainer = document.createElement("div");
 sideBarContainer.classList.add("sidebar-section");
 sideBarContainer.setAttribute("id", "sidebar");
 sideBarContainer.appendChild(navigationToDos());
 sideBarContainer.appendChild(navigationProjects());
-
 mainContainer.appendChild(sideBarContainer);
 mainContainer.appendChild(contentSection());
+
 document.body.appendChild(mainContainer);
 addToggleSidebarEventHandler();
 
 document.body.appendChild(footer());
 
-// create eventHandlers to load different filters
-// create module for each page
-
-// create form inputs required > add project, add todo, edit todo (same as add)
+// project form input
+// eventlistener added to "add project" button located in navigationProjects
+// cancel = close and reset form without submitting
+// add = submit and reset form

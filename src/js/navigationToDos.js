@@ -1,5 +1,5 @@
 const createButton = (title, symbol) => {
-  let btn = document.createElement("btn");
+  let btn = document.createElement("button");
   btn.classList.add("btn", "btn-secondary", "btn-primary", "sidebar-item");
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");

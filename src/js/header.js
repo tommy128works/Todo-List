@@ -13,7 +13,7 @@ const addToggleSidebarEventHandler = () => {
 };
 
 const createTogglerButton = () => {
-  let btn = document.createElement("btn");
+  let btn = document.createElement("button");
   btn.setAttribute("type", "button");
   let span = document.createElement("span");
   span.classList.add("navbar-toggler-icon");

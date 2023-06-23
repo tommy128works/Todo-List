@@ -1,4 +1,4 @@
-const addToggleSidebarEventHandler = () => {
+const addToggleSidebarEventListener = () => {
   let btn = document.getElementById("toggleSidebarButton");
 
   btn.addEventListener("click", (event) => {
@@ -41,4 +41,4 @@ const header = () => {
   return header;
 };
 
-export { header, addToggleSidebarEventHandler };
+export { header, addToggleSidebarEventListener };

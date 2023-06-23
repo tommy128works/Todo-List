@@ -8,9 +8,9 @@ import createToDo from "./createToDo";
 import createProject from "./createProject";
 
 // user interface module > imports other modules to divide UI into components
-import { header, addToggleSidebarEventHandler } from "./header";
+import { header, addToggleSidebarEventListener } from "./header";
 import navigationToDos from "./navigationToDos";
-import navigationProjects from "./navigationProjects";
+import { navigationProjects, addAddProjectFormEventListeners } from "./navigationProjects";
 import contentSection from "./contentSection";
 import footer from "./footer";
 
@@ -28,7 +28,8 @@ mainContainer.appendChild(sideBarContainer);
 mainContainer.appendChild(contentSection());
 
 document.body.appendChild(mainContainer);
-addToggleSidebarEventHandler();
+addToggleSidebarEventListener();
+addAddProjectFormEventListeners();
 
 document.body.appendChild(footer());
 

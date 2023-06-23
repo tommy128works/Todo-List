@@ -31,9 +31,9 @@ const addAddProjectFormEventListeners = () => {
       projectsArray.push(createProject(projectName.value));
       updateStorage(projectsArray);
 
-      // for testing only
-      console.log(displayStorage());
-      console.log(projectsArray);
+      // // for testing only
+      // console.log(displayStorage());
+      // console.log(projectsArray);
 
       // needs to send input value to createProject() and projectsArray
       form.style.display = "none";

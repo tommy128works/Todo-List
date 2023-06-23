@@ -73,16 +73,37 @@ const createAddTaskForm = () => {
   form.classList.add("task-form");
 
   let label = document.createElement("label");
-  label.setAttribute("for", "task_name");
-  label.textContent = "Project Name:";
+  label.setAttribute("for", "task_title");
+  label.textContent = "Title:";
   form.appendChild(label);
 
   let input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.setAttribute("name", "project_name");
-  input.setAttribute("id", "project_name");
+  input.setAttribute("name", "task_title");
+  input.setAttribute("id", "task_title");
   form.appendChild(input);
 
+  label = document.createElement("label");
+  label.setAttribute("for", "task_details");
+  label.textContent = "Details:";
+  form.appendChild(label);
+
+  input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("name", "task_details");
+  input.setAttribute("id", "task_details");
+  form.appendChild(input);
+
+  label = document.createElement("label");
+  label.setAttribute("for", "task_date");
+  label.textContent = "Date:";
+  form.appendChild(label);
+
+  input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("name", "task_date");
+  input.setAttribute("id", "task_date");
+  form.appendChild(input);
 
 
 

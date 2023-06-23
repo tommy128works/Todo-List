@@ -130,28 +130,6 @@ const createAddTaskForm = () => {
   return form;
 };
 
-const addAddTaskFormEventListeners = () => {
-  let addBtn = document.getElementById("add-task-button");
-  let submitBtn = document.getElementById("submit-task-button");
-  let cancelBtn = document.getElementById("cancel-task-button");
-  let form = document.getElementById("task-form");
-
-  addBtn.addEventListener("click", (event) => {
-    form.style.display = "flex";
-    addBtn.style.display = "none";
-  });
-
-  submitBtn.addEventListener("click", (event) => {
-    form.style.display = "none";
-    addBtn.style.display = "flex";
-  });
-
-  cancelBtn.addEventListener("click", (event) => {
-    form.style.display = "none";
-    addBtn.style.display = "flex";
-  });
-};
-
 const contentSection = () => {
   let container = document.createElement("div");
   container.classList.add("content-section");
@@ -167,4 +145,4 @@ const contentSection = () => {
   return container;
 };
 
-export { contentSection, addAddTaskFormEventListeners };
+export default contentSection;

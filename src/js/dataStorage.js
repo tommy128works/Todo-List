@@ -26,13 +26,30 @@ function storageAvailable(type) {
   }
 }
 
+function checkStorageAvailability() {
+  if (storageAvailable("localStorage")) {
+    console.log("Web Storage API is available on this browser!");
+  } else {
+    alert(
+      "Web Storage API is not available on this browser. Your data will not be saved."
+    );
+  }
+}
+
 // test if storage has been populated
-// (simpled if statement checking if localStorage is empty)
-// if yes, display existing projects on default page
+// (simple if statement checking if localStorage is empty)
+// if yes, retrieve all stored projects
 
-// add new project to storage
+// add project objects to storage
+// argument = global array of objects
+// clear > store
 
-// add new todo to project in storage
+const updateStorage = (projectsArray) => {
+  localStorage.clear();
+  projectsArray.forEach((project) => {
+    localStorage.setItem(project.title, JSON.stringify(project));
+  });
+};
 
 // retrieve data from storage to display (part of refresh page function)
 // for now, display all projects
@@ -43,4 +60,4 @@ function storageAvailable(type) {
 
 // delete specific todo function
 
-export default storageAvailable;
+export { checkStorageAvailability, updateStorage };

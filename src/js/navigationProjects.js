@@ -85,35 +85,6 @@ const createAddProjectForm = () => {
   return form;
 };
 
-const addAddProjectFormEventListeners = () => {
-  let addBtn = document.getElementById("add-project-button");
-  let submitBtn = document.getElementById("submit-project-button");
-  let cancelBtn = document.getElementById("cancel-project-button");
-  let form = document.getElementById("project-form");
-  let projectName = document.getElementById("project_name");
-
-  addBtn.addEventListener("click", (event) => {
-    form.style.display = "block";
-    addBtn.style.display = "none";
-  });
-
-  submitBtn.addEventListener("click", (event) => {
-    if (projectName.value === "") {
-      alert("Project name cannot be empty!");
-    } else {
-      form.style.display = "none";
-      addBtn.style.display = "flex";
-      projectName.value = "";
-    }
-  });
-
-  cancelBtn.addEventListener("click", (event) => {
-    form.style.display = "none";
-    addBtn.style.display = "flex";
-    projectName.value = "";
-  });
-};
-
 const navigationProjects = () => {
   let container = document.createElement("div");
   container.classList.add("btn-group-vertical");
@@ -132,4 +103,4 @@ const navigationProjects = () => {
   return container;
 };
 
-export { navigationProjects, addAddProjectFormEventListeners };
+export default navigationProjects;

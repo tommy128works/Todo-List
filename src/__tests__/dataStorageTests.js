@@ -9,9 +9,11 @@ import createProject from "./createProject";
 // if no, display a warning indicating data will not be saved because..
 function testAvailability() {
   if (storageAvailable("localStorage")) {
-    console.log("It is working");
+    console.log("Web Storage API is available on this browser!");
   } else {
-    console.log("it is not working");
+    alert(
+      "Web Storage API is not available on this browser. Your data will not be saved."
+    );
   }
 }
 
@@ -42,10 +44,11 @@ function testAddProject() {
 
   localStorage.clear();
   localStorage.setItem(testProject.title, JSON.stringify(testProject));
-  let retrievedData = JSON.parse(localStorage.getItem(testProject.title));
 
+  let retrievedData = JSON.parse(localStorage.getItem(testProject.title));
   let retrievedProject = createProject(retrievedData.title);
   retrievedProject.addToDos(retrievedData.toDos);
+
   retrievedProject.addToDo(toDo4);
   console.log(retrievedProject);
 }

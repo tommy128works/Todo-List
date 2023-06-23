@@ -3,18 +3,19 @@ import * as bootstrap from "bootstrap";
 
 // modules
 // module for todos that contains all properties
-import storageAvailable from "./dataStorage";
+import { checkStorageAvailability, updateStorage } from "./dataStorage";
 import createToDo from "./createToDo";
 import createProject from "./createProject";
+import {
+  addAddProjectFormEventListeners,
+  addAddTaskFormEventListeners,
+} from "./dataHandler";
 
 // user interface module > imports other modules to divide UI into components
 import { header, addToggleSidebarEventListener } from "./header";
 import navigationToDos from "./navigationToDos";
-import {
-  navigationProjects,
-  addAddProjectFormEventListeners,
-} from "./navigationProjects";
-import { contentSection, addAddTaskFormEventListeners } from "./contentSection";
+import navigationProjects from "./navigationProjects";
+import contentSection from "./contentSection";
 import footer from "./footer";
 
 document.body.appendChild(header());

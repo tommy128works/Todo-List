@@ -51,13 +51,14 @@ const createAddProjectForm = () => {
 
   let label = document.createElement("label");
   label.setAttribute("for", "project_name");
-  label.textContent = "Project Name:";
+  label.textContent = "*Project Name:";
   form.appendChild(label);
 
   let input = document.createElement("input");
   input.setAttribute("type", "text");
   input.setAttribute("name", "project_name");
   input.setAttribute("id", "project_name");
+  input.required = true;
   form.appendChild(input);
 
   let btnsContainer = document.createElement("div");
@@ -89,6 +90,7 @@ const addAddProjectFormEventListeners = () => {
   let submitBtn = document.getElementById("submit-project-button");
   let cancelBtn = document.getElementById("cancel-project-button");
   let form = document.getElementById("project-form");
+  let projectName = document.getElementById("project_name");
 
   addBtn.addEventListener("click", (event) => {
     form.style.display = "block";
@@ -96,13 +98,19 @@ const addAddProjectFormEventListeners = () => {
   });
 
   submitBtn.addEventListener("click", (event) => {
-    form.style.display = "none";
-    addBtn.style.display = "flex";
+    if (projectName.value === "") {
+      alert("Project name cannot be empty!");
+    } else {
+      form.style.display = "none";
+      addBtn.style.display = "flex";
+      projectName.value = "";
+    }
   });
 
   cancelBtn.addEventListener("click", (event) => {
     form.style.display = "none";
     addBtn.style.display = "flex";
+    projectName.value = "";
   });
 };
 

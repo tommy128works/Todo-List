@@ -92,14 +92,17 @@ const addAddProjectFormEventListeners = () => {
 
   addBtn.addEventListener("click", (event) => {
     form.style.display = "block";
+    addBtn.style.display = "none";
   });
 
   submitBtn.addEventListener("click", (event) => {
     form.style.display = "none";
+    addBtn.style.display = "flex";
   });
   
   cancelBtn.addEventListener("click", (event) => {
     form.style.display = "none";
+    addBtn.style.display = "flex";
   });
 };
 

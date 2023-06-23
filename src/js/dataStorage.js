@@ -54,15 +54,8 @@ const updateStorage = (projectsArray) => {
 // retrieve data from storage to display (part of refresh page function)
 // for now, display all projects
 const displayStorage = () => {
-  var values = [],
-    keys = Object.keys(localStorage),
-    i = keys.length;
-
-  while (i--) {
-    values.push(localStorage.getItem(keys[i]));
-  }
-
-  return values;
+  const items = { ...localStorage };
+  return items;
 };
 
 // delete everything function

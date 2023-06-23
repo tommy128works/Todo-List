@@ -1,17 +1,14 @@
 import "../scss/styles.scss";
 import * as bootstrap from "bootstrap";
 
-// modules
-// module for todos that contains all properties
-import { checkStorageAvailability, updateStorage } from "./dataStorage";
-import createToDo from "./createToDo";
-import createProject from "./createProject";
+// logic-related modules
+import { checkStorageAvailability } from "./dataStorage";
 import {
   addAddProjectFormEventListeners,
   addAddTaskFormEventListeners,
 } from "./dataHandler";
 
-// user interface module > imports other modules to divide UI into components
+// UI modules
 import { header, addToggleSidebarEventListener } from "./header";
 import navigationToDos from "./navigationToDos";
 import navigationProjects from "./navigationProjects";

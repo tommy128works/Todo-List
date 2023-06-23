@@ -1,6 +1,8 @@
+import createToDo from "./createToDo";
 import createProject from "./createProject";
-import { updateStorage } from "./dataStorage";
-import projectsArray from "./index";
+import { updateStorage, displayStorage } from "./dataStorage";
+
+let projectsArray = [];
 
 const addAddProjectFormEventListeners = () => {
   let addBtn = document.getElementById("add-project-button");
@@ -18,9 +20,9 @@ const addAddProjectFormEventListeners = () => {
     if (projectName.value === "") {
       alert("Project name cannot be empty!");
     } else {
-      // let newProject = createProject(projectName.value);
-      // projectsArray.push(newProject);
+      // projectsArray.push(createProject(projectName.value));
       // updateStorage(projectsArray);
+      // console.log(displayStorage());
 
       // needs to send input value to createProject() and projectsArray
       form.style.display = "none";
@@ -34,6 +36,17 @@ const addAddProjectFormEventListeners = () => {
     addBtn.style.display = "flex";
     projectName.value = "";
   });
+
+  form.addEventListener("keydown", (event) => {
+    switch (event.key) {
+      case "Enter":
+        document.getElementById("submit-project-button").click();
+        break;
+      case "Escape":
+        document.getElementById("cancel-project-button").click();
+        break;
+    }
+  })
 };
 
 const addAddTaskFormEventListeners = () => {
@@ -56,6 +69,17 @@ const addAddTaskFormEventListeners = () => {
     form.style.display = "none";
     addBtn.style.display = "flex";
   });
+
+  form.addEventListener("keydown", (event) => {
+    switch (event.key) {
+      case "Enter":
+        document.getElementById("submit-task-button").click();
+        break;
+      case "Escape":
+        document.getElementById("cancel-task-button").click();
+        break;
+    }
+  })
 };
 
 export { addAddProjectFormEventListeners, addAddTaskFormEventListeners };

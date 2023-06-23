@@ -97,7 +97,6 @@ footer {
   }
 }
 
-
 .content-section {
   flex: 1;
   display: flex;
@@ -112,15 +111,14 @@ footer {
   flex: 1;
 }
 
-.add-new-task-btn {
+.add-task-button {
   display: flex;
   gap: 10px;
   margin: 20px;
-
 }
 
 .task-form {
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 10px;
 }

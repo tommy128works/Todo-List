@@ -66,7 +66,7 @@ const createAddProjectForm = () => {
   let submitBtn = document.createElement("button");
   // "submit" submits the form and refreshes page, but this specific application may not need to submit to a real database
   // if no real database, you can set type = "button" to stop refreshes
-  submitBtn.setAttribute("type", "button"); 
+  submitBtn.setAttribute("type", "button");
   submitBtn.setAttribute("id", "submit-project-button");
   submitBtn.textContent = "Submit";
   submitBtn.classList.add("btn", "btn-success");
@@ -82,7 +82,7 @@ const createAddProjectForm = () => {
   form.appendChild(btnsContainer);
 
   return form;
-}
+};
 
 const addAddProjectFormEventListeners = () => {
   let addBtn = document.getElementById("add-project-button");
@@ -99,7 +99,7 @@ const addAddProjectFormEventListeners = () => {
     form.style.display = "none";
     addBtn.style.display = "flex";
   });
-  
+
   cancelBtn.addEventListener("click", (event) => {
     form.style.display = "none";
     addBtn.style.display = "flex";
@@ -117,7 +117,7 @@ const navigationProjects = () => {
 
   // dummy project to be removed in the future
   container.appendChild(createButton("Project ONE"));
-  
+
   container.appendChild(createAddButton());
   container.appendChild(createAddProjectForm());
 

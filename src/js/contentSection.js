@@ -6,7 +6,7 @@ const createTitle = () => {
   div.textContent = "All Tasks"; // This title changes based on page
 
   return div;
-}
+};
 
 const createTaskItem = (title, description, date, priority) => {
   let container = document.createElement("div");
@@ -19,7 +19,7 @@ const createTaskItem = (title, description, date, priority) => {
 
   let textContainer = document.createElement("div");
   textContainer.classList.add("task-item-text");
-  
+
   let taskTitle = document.createElement("div");
   taskTitle.classList.add("small-font");
   taskTitle.textContent = title;
@@ -51,21 +51,22 @@ const createTaskItem = (title, description, date, priority) => {
 
 const createAddTaskButton = () => {
   let btn = document.createElement("button");
-  btn.classList.add("btn", "btn-secondary", "add-new-task-btn");
+  btn.classList.add("btn", "btn-secondary", "add-task-button");
   btn.setAttribute("type", "button");
-  
+  btn.setAttribute("id", "add-task-button");
+
   let span = document.createElement("span");
   span.classList.add("material-symbols-outlined");
   span.textContent = "add_circle";
   btn.appendChild(span);
-  
+
   span = document.createElement("span");
   span.classList.add("project-title");
   span.textContent = "Add New Task";
   btn.appendChild(span);
-  
+
   return btn;
-}
+};
 
 const createAddTaskForm = () => {
   let form = document.createElement("form");
@@ -105,15 +106,13 @@ const createAddTaskForm = () => {
   input.setAttribute("id", "task_date");
   form.appendChild(input);
 
-
-
   let btnsContainer = document.createElement("div");
   btnsContainer.classList.add("btns-container");
 
   let submitBtn = document.createElement("button");
   // "submit" submits the form and refreshes page, but this specific application may not need to submit to a real database
   // if no real database, you can set type = "button" to stop refreshes
-  submitBtn.setAttribute("type", "button"); 
+  submitBtn.setAttribute("type", "button");
   submitBtn.setAttribute("id", "submit-task-button");
   submitBtn.textContent = "Submit";
   submitBtn.classList.add("btn", "btn-success");
@@ -129,20 +128,43 @@ const createAddTaskForm = () => {
   form.appendChild(btnsContainer);
 
   return form;
-}
+};
+
+const addAddTaskFormEventListeners = () => {
+  let addBtn = document.getElementById("add-task-button");
+  let submitBtn = document.getElementById("submit-task-button");
+  let cancelBtn = document.getElementById("cancel-task-button");
+  let form = document.getElementById("task-form");
+
+  addBtn.addEventListener("click", (event) => {
+    form.style.display = "flex";
+    addBtn.style.display = "none";
+  });
+
+  submitBtn.addEventListener("click", (event) => {
+    form.style.display = "none";
+    addBtn.style.display = "flex";
+  });
+
+  cancelBtn.addEventListener("click", (event) => {
+    form.style.display = "none";
+    addBtn.style.display = "flex";
+  });
+};
 
 const contentSection = () => {
   let container = document.createElement("div");
   container.classList.add("content-section");
-  
+
   container.appendChild(createTitle());
-  container.appendChild(createTaskItem("tempTitle", "tempDescription", "date format undecided", 5));
+  container.appendChild(
+    createTaskItem("tempTitle", "tempDescription", "date format undecided", 5)
+  );
   container.appendChild(createAddTaskButton());
 
   container.appendChild(createAddTaskForm());
-  
 
   return container;
 };
 
-export default contentSection;
+export { contentSection, addAddTaskFormEventListeners };

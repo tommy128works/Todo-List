@@ -7,9 +7,6 @@ const footer = () => {
 
   // credit to icons
 
-
-  
-
   // copyright = Copyright (c) 2023 tommy128works
   let span = document.createElement("span");
   span.textContent = "Copyright © 2023 tommy128works";
@@ -27,6 +24,6 @@ const footer = () => {
   footer.appendChild(anchor);
 
   return footer;
-}; 
+};
 
 export default footer;

@@ -75,13 +75,14 @@ const createAddTaskForm = () => {
 
   let label = document.createElement("label");
   label.setAttribute("for", "task_title");
-  label.textContent = "Title:";
+  label.textContent = "*Title:";
   form.appendChild(label);
 
   let input = document.createElement("input");
   input.setAttribute("type", "text");
   input.setAttribute("name", "task_title");
   input.setAttribute("id", "task_title");
+  input.required = true;
   form.appendChild(input);
 
   label = document.createElement("label");

@@ -4,9 +4,9 @@ import { updateStorage, displayStorage } from "./dataStorage";
 
 let projectsArray = [];
 
-const checkProjectsDuplicates = (projectsArray, string) => {
-  let projectTitles = projectsArray.map((project) => project.title);
-  return projectTitles.includes(string);
+const checkDuplicates = (array, string) => {
+  let arrayTitles = array.map((element) => element.title);
+  return arrayTitles.includes(string);
 }
 
 const addAddProjectFormEventListeners = () => {
@@ -25,7 +25,7 @@ const addAddProjectFormEventListeners = () => {
   submitBtn.addEventListener("click", (event) => {
     if (projectName.value === "") {
       alert("Project name cannot be empty!");
-    } else if (checkProjectsDuplicates(projectsArray, projectName.value)) {
+    } else if (checkDuplicates(projectsArray, projectName.value)) {
       alert("Project names must be different");
     } else {
       projectsArray.push(createProject(projectName.value));
@@ -35,7 +35,6 @@ const addAddProjectFormEventListeners = () => {
       // console.log(displayStorage());
       // console.log(projectsArray);
 
-      // needs to send input value to createProject() and projectsArray
       form.style.display = "none";
       addBtn.style.display = "flex";
       projectName.value = "";
@@ -66,6 +65,8 @@ const addAddTaskFormEventListeners = () => {
   let cancelBtn = document.getElementById("cancel-task-button");
   let form = document.getElementById("task-form");
   let taskTitle = document.getElementById("task_title");
+  let taskDetails = document.getElementById("task_details");
+  let taskDate = document.getElementById("task_date");
 
   addBtn.addEventListener("click", (event) => {
     form.style.display = "flex";
@@ -74,13 +75,23 @@ const addAddTaskFormEventListeners = () => {
   });
 
   submitBtn.addEventListener("click", (event) => {
-    form.style.display = "none";
-    addBtn.style.display = "flex";
+    if (taskTitle.value === "") {
+      alert("Task title cannot be empty!");
+    } else {
+      form.style.display = "none";
+      addBtn.style.display = "flex";
+      taskTitle.value = "";
+      taskDetails.value = "";
+      taskDate.value = "";
+    }
   });
 
   cancelBtn.addEventListener("click", (event) => {
     form.style.display = "none";
     addBtn.style.display = "flex";
+    taskTitle.value = "";
+    taskDetails.value = "";
+    taskDate.value = "";
   });
 
   form.addEventListener("keydown", (event) => {

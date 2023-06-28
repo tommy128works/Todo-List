@@ -4,9 +4,9 @@ const createToDo = (
   description = null,
   dueDate = null,
   isComplete = false,
-  priority = 0
+  favourite = false
 ) => {
-  return { title, description, dueDate, isComplete, priority };
+  return { title, description, dueDate, isComplete, favourite };
 };
 
 export default createToDo;

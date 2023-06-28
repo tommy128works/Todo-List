@@ -35,7 +35,3 @@ addAddTaskFormEventListeners();
 
 document.body.appendChild(footer());
 
-// project form input
-// eventlistener added to "add project" button located in navigationProjects
-// cancel = close and reset form without submitting
-// add = submit and reset form

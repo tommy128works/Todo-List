@@ -4,6 +4,21 @@ import { updateStorage, displayStorage } from "./dataStorage";
 
 let projectsArray = [];
 
+const storeSampleData = () => {
+  projectsArray.push(createProject("School"));
+  projectsArray[0].addToDo(createToDo("Assignment"));
+  projectsArray[0].addToDo(createToDo("Study for Test"));
+  projectsArray[0].addToDo(createToDo("Project"));
+
+  projectsArray.push(createProject("Entertainment"));
+  projectsArray[1].addToDo(createToDo("TV"));
+  projectsArray[1].addToDo(createToDo("Movies"));
+  projectsArray[1].addToDo(createToDo("Books"));
+  
+  updateStorage(projectsArray);
+}
+
+
 const checkDuplicates = (array, string) => {
   let arrayTitles = array.map((element) => element.title);
   return arrayTitles.includes(string);
@@ -77,7 +92,17 @@ const addAddTaskFormEventListeners = () => {
   submitBtn.addEventListener("click", (event) => {
     if (taskTitle.value === "") {
       alert("Task title cannot be empty!");
-    } else {
+    } 
+    // Need to assume project context which depends on what page the user is currently on
+    
+    // else if (checkDuplicates(projectsArray, projectName.value)) {
+    //   alert("Project names must be different");
+    // }
+     else {
+      // need to call projectsArray[index].addToDo();
+      // testProject.addToDo(createToDo(taskTitle.value));
+
+
       form.style.display = "none";
       addBtn.style.display = "flex";
       taskTitle.value = "";
@@ -106,4 +131,4 @@ const addAddTaskFormEventListeners = () => {
   });
 };
 
-export { addAddProjectFormEventListeners, addAddTaskFormEventListeners };
+export { storeSampleData, addAddProjectFormEventListeners, addAddTaskFormEventListeners };

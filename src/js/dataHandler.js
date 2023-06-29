@@ -1,6 +1,6 @@
 import createToDo from "./createToDo";
 import createProject from "./createProject";
-import { updateStorage, displayStorage } from "./dataStorage";
+import { updateStorage, retrieveStorage } from "./dataStorage";
 
 let projectsArray = [];
 
@@ -15,7 +15,19 @@ const storeSampleData = () => {
   projectsArray[1].addToDo(createToDo("Movies"));
   projectsArray[1].addToDo(createToDo("Books"));
   
+  // for testing only
+  console.log(projectsArray);
+
   updateStorage(projectsArray);
+
+  // retrieve localStorage and store in projectsArray
+  let retrievedProjectsArray = [];
+  let retrievedData = retrieveStorage();
+  for (let i = 0; i < retrievedData.length; i++) {
+    retrievedProjectsArray[i] = createProject(retrievedData[i].title);
+    retrievedProjectsArray[i].addToDos(retrievedData[i].toDos);
+  }
+  console.log(retrievedProjectsArray);
 }
 
 

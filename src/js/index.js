@@ -5,7 +5,7 @@ import * as bootstrap from "bootstrap";
 import { checkStorageAvailability } from "./dataStorage";
 import {
   addAddProjectFormEventListeners,
-  addAddTaskFormEventListeners,
+  addAddTaskFormEventListeners, storeSampleData
 } from "./dataHandler";
 
 // UI modules
@@ -35,3 +35,4 @@ addAddTaskFormEventListeners();
 
 document.body.appendChild(footer());
 
+storeSampleData();

@@ -53,9 +53,15 @@ const updateStorage = (projectsArray) => {
 
 // retrieve data from storage to display (part of refresh page function)
 // for now, display all projects
-const displayStorage = () => {
-  const items = { ...localStorage };
-  return items;
+const retrieveStorage = () => {
+  let values = [],
+    keys = Object.keys(localStorage);
+
+  for (let key of keys) {
+    values.push(JSON.parse(localStorage.getItem(key)));
+  }
+
+  return values;
 };
 
 // delete everything function
@@ -64,4 +70,4 @@ const displayStorage = () => {
 
 // delete specific todo function
 
-export { checkStorageAvailability, updateStorage, displayStorage };
+export { checkStorageAvailability, updateStorage, retrieveStorage };

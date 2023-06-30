@@ -1,6 +1,6 @@
 import createToDo from "./createToDo";
 import createProject from "./createProject";
-import { updateStorage, retrieveStorage } from "./dataStorage";
+import { checkStorageAvailability, updateStorage, retrieveStorage } from "./dataStorage";
 
 let projectsArray = [];
 
@@ -14,9 +14,6 @@ const storeSampleData = () => {
   projectsArray[1].addToDo(createToDo("TV"));
   projectsArray[1].addToDo(createToDo("Movies"));
   projectsArray[1].addToDo(createToDo("Books"));
-  
-  // for testing only
-  console.log(projectsArray);
 
   updateStorage(projectsArray);
 }
@@ -28,10 +25,32 @@ const retrieveProjectsArrayFromStorage = () => {
     retrievedProjectsArray[i] = createProject(retrievedData[i].title);
     retrievedProjectsArray[i].addToDos(retrievedData[i].toDos);
   }
-  // for testing only
-  console.log(retrievedProjectsArray);
+
   return retrievedProjectsArray;
 }
+
+const exportProjectArraysTitles = () => {
+  let projectTitles = [];
+  for (let i = 0; i < projectsArray.length; i ++) {
+    projectTitles.push(projectsArray[i].title);
+  }
+  return projectTitles;
+}
+
+
+const onStartUp = () => {
+  checkStorageAvailability();
+
+  // for development purpose only
+  storeSampleData();
+
+  if (Object.keys(localStorage).length > 0) {
+    projectsArray = retrieveProjectsArrayFromStorage();
+    // we want to keep the projectsArray here
+    // export titles and properties to load in UI .. rip
+  }
+}
+
 
 const checkDuplicates = (array, string) => {
   let arrayTitles = array.map((element) => element.title);
@@ -145,4 +164,4 @@ const addAddTaskFormEventListeners = () => {
   });
 };
 
-export { storeSampleData, retrieveProjectsArrayFromStorage, addAddProjectFormEventListeners, addAddTaskFormEventListeners };
+export { storeSampleData, retrieveProjectsArrayFromStorage, exportProjectArraysTitles, onStartUp, addAddProjectFormEventListeners, addAddTaskFormEventListeners };

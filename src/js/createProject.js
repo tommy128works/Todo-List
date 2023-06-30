@@ -23,7 +23,7 @@ const createProject = (title) => {
     }
   };
 
-  // sort toDos
+  // sort toDos --- currently does not work as intended
   const sortToDos = () => toDos.sort(comparePriority);
 
   // delete a todo

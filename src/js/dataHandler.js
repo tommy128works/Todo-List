@@ -1,6 +1,10 @@
 import createToDo from "./createToDo";
 import createProject from "./createProject";
 import { checkStorageAvailability, updateStorage, retrieveStorage } from "./dataStorage";
+import navigationToDos from "./navigationToDos";
+import navigationProjects from "./navigationProjects";
+import contentSection from "./contentSection";
+import { addToggleSidebarEventListener } from "./header";
 
 let projectsArray = [];
 
@@ -37,15 +41,35 @@ const exportProjectArraysTitles = () => {
   return projectTitles;
 }
 
+const loadPage = () => {
+  let mainContainer = document.getElementById("main-container");
+  mainContainer.innerHTML = "";
+
+  let sideBarContainer = document.createElement("div");
+  sideBarContainer.classList.add("sidebar-section");
+  sideBarContainer.setAttribute("id", "sidebar");
+  sideBarContainer.appendChild(navigationToDos());
+  sideBarContainer.appendChild(navigationProjects());
+  mainContainer.appendChild(sideBarContainer);
+  mainContainer.appendChild(contentSection());
+  
+  addToggleSidebarEventListener();
+  addAddProjectFormEventListeners();
+  addAddTaskFormEventListeners();
+}
+
 
 const onStartUp = () => {
   checkStorageAvailability();
 
   // for development purpose only
   storeSampleData();
+  loadPage();
+
 
   if (Object.keys(localStorage).length > 0) {
     projectsArray = retrieveProjectsArrayFromStorage();
+    
     // we want to keep the projectsArray here
     // export titles and properties to load in UI .. rip
   }

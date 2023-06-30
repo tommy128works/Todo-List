@@ -1,6 +1,10 @@
 import createToDo from "./createToDo";
 import createProject from "./createProject";
-import { checkStorageAvailability, updateStorage, retrieveStorage } from "./dataStorage";
+import {
+  checkStorageAvailability,
+  updateStorage,
+  retrieveStorage,
+} from "./dataStorage";
 import navigationToDos from "./navigationToDos";
 import navigationProjects from "./navigationProjects";
 import contentSection from "./contentSection";
@@ -20,7 +24,7 @@ const storeSampleData = () => {
   projectsArray[1].addToDo(createToDo("Books"));
 
   updateStorage(projectsArray);
-}
+};
 
 const retrieveProjectsArrayFromStorage = () => {
   let retrievedProjectsArray = [];
@@ -31,17 +35,22 @@ const retrieveProjectsArrayFromStorage = () => {
   }
 
   return retrievedProjectsArray;
-}
+};
 
 const exportProjectArraysTitles = () => {
   let projectTitles = [];
-  for (let i = 0; i < projectsArray.length; i ++) {
+  for (let i = 0; i < projectsArray.length; i++) {
     projectTitles.push(projectsArray[i].title);
   }
   return projectTitles;
-}
+};
 
-const loadPage = () => {
+const loadPage = (projectsArray) => {
+  let projectsTitles = [];
+  for (let i = 0; i < projectsArray.length; i++) {
+    projectsTitles.push(projectsArray[i].title);
+  }
+
   let mainContainer = document.getElementById("main-container");
   mainContainer.innerHTML = "";
 
@@ -49,37 +58,34 @@ const loadPage = () => {
   sideBarContainer.classList.add("sidebar-section");
   sideBarContainer.setAttribute("id", "sidebar");
   sideBarContainer.appendChild(navigationToDos());
-  sideBarContainer.appendChild(navigationProjects());
+  sideBarContainer.appendChild(navigationProjects(projectsTitles));
   mainContainer.appendChild(sideBarContainer);
   mainContainer.appendChild(contentSection());
-  
+
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
   addAddTaskFormEventListeners();
-}
-
+};
 
 const onStartUp = () => {
+  
   checkStorageAvailability();
 
   // for development purpose only
   storeSampleData();
-  loadPage();
-
 
   if (Object.keys(localStorage).length > 0) {
     projectsArray = retrieveProjectsArrayFromStorage();
-    
-    // we want to keep the projectsArray here
-    // export titles and properties to load in UI .. rip
   }
-}
 
+  loadPage(projectsArray);
+
+};
 
 const checkDuplicates = (array, string) => {
   let arrayTitles = array.map((element) => element.title);
   return arrayTitles.includes(string);
-}
+};
 
 const addAddProjectFormEventListeners = () => {
   let addBtn = document.getElementById("add-project-button");
@@ -149,16 +155,15 @@ const addAddTaskFormEventListeners = () => {
   submitBtn.addEventListener("click", (event) => {
     if (taskTitle.value === "") {
       alert("Task title cannot be empty!");
-    } 
+    }
     // Need to assume project context which depends on what page the user is currently on
-    
+
     // else if (checkDuplicates(projectsArray, projectName.value)) {
     //   alert("Project names must be different");
     // }
-     else {
+    else {
       // need to call projectsArray[index].addToDo();
       // testProject.addToDo(createToDo(taskTitle.value));
-
 
       form.style.display = "none";
       addBtn.style.display = "flex";
@@ -188,4 +193,11 @@ const addAddTaskFormEventListeners = () => {
   });
 };
 
-export { storeSampleData, retrieveProjectsArrayFromStorage, exportProjectArraysTitles, onStartUp, addAddProjectFormEventListeners, addAddTaskFormEventListeners };
+export {
+  storeSampleData,
+  retrieveProjectsArrayFromStorage,
+  exportProjectArraysTitles,
+  onStartUp,
+  addAddProjectFormEventListeners,
+  addAddTaskFormEventListeners,
+};

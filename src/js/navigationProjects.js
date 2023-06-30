@@ -85,7 +85,7 @@ const createAddProjectForm = () => {
   return form;
 };
 
-const navigationProjects = () => {
+const navigationProjects = (projectsTitles) => {
   let container = document.createElement("div");
   container.classList.add("btn-group-vertical");
 
@@ -94,8 +94,11 @@ const navigationProjects = () => {
   heading.textContent = "Projects";
   container.appendChild(heading);
 
-  // dummy project to be removed in the future
-  container.appendChild(createButton("Project ONE"));
+  if (projectsTitles.length > 0) {
+    for (let i = 0; i < projectsTitles.length; i++) {
+      container.appendChild(createButton(projectsTitles[i]));
+    }
+  }
 
   container.appendChild(createAddButton());
   container.appendChild(createAddProjectForm());

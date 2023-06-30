@@ -2,20 +2,11 @@ import "../scss/styles.scss";
 import * as bootstrap from "bootstrap";
 
 // logic-related modules
-import {
-  onStartUp,
-} from "./dataHandler";
+import { onStartUp } from "./dataHandler";
 
 // UI modules
 import { header } from "./header";
-
 import footer from "./footer";
-
-
-
-// let copyProjectsArray = [];
-// console.log(copyProjectsArray);
-
 
 document.body.appendChild(header());
 
@@ -27,7 +18,3 @@ document.body.appendChild(mainContainer);
 document.body.appendChild(footer());
 
 onStartUp();
-
-
-
-

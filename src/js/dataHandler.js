@@ -53,28 +53,29 @@ const loadPage = (currentPage, projectsArray) => {
 
   // need to make cases to populate the tasks that meet the criteria
   // need to filter tasks while retaining properties
+  // THIS IS WHERE I CAN SORT THE TASKS BY PRIORITY, DATE, ETC.
   let tasksList = [];
   console.log(projectsArray);
 
-  switch(currentPage) {
+  switch (currentPage) {
     case "All Tasks":
       for (let i = 0; i < projectsArray.length; i++) {
         for (let x = 0; x < projectsArray[i].toDos.length; x++) {
           tasksList.push(projectsArray[i].toDos[x]);
         }
       }
+      console.log(tasksList);
       break;
 
     case "Today":
-      break; 
+      break;
 
     case "Next 7 Days":
       break;
 
     default:
-      // for specific projects
-      // what if empty?
-
+    // for specific projects
+    // what if empty?
   }
 
   let mainContainer = document.getElementById("main-container");
@@ -86,15 +87,24 @@ const loadPage = (currentPage, projectsArray) => {
   sideBarContainer.appendChild(navigationToDos());
   sideBarContainer.appendChild(navigationProjects(projectsTitles));
   mainContainer.appendChild(sideBarContainer);
-  mainContainer.appendChild(contentSection(currentPage));
+  mainContainer.appendChild(contentSection(currentPage, tasksList));
+
+  if (
+    !(
+      currentPage === "All Tasks" ||
+      currentPage === "Today" ||
+      currentPage === "Next 7 Days"
+    )
+  ) {
+    addAddTaskFormEventListeners();
+  }
 
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
-  addAddTaskFormEventListeners();
+
 };
 
 const onStartUp = () => {
-  
   checkStorageAvailability();
 
   // for development purpose only
@@ -105,7 +115,6 @@ const onStartUp = () => {
   }
 
   loadPage("All Tasks", projectsArray);
-
 };
 
 const checkDuplicates = (array, string) => {

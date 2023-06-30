@@ -8,10 +8,11 @@ const createTitle = (currentPage) => {
   return div;
 };
 
-const createTaskItem = (title, description, date, priority) => {
+const createTaskItem = (title, description, dueDate, isComplete, favourite) => {
   let container = document.createElement("div");
   container.classList.add("task-item");
 
+  // intended for isComplete
   let span = document.createElement("span");
   span.classList.add("material-symbols-outlined");
   span.textContent = "radio_button_unchecked";
@@ -20,6 +21,7 @@ const createTaskItem = (title, description, date, priority) => {
   let textContainer = document.createElement("div");
   textContainer.classList.add("task-item-text");
 
+  // intended for title and description
   let taskTitle = document.createElement("div");
   taskTitle.classList.add("small-font");
   taskTitle.textContent = title;
@@ -30,17 +32,19 @@ const createTaskItem = (title, description, date, priority) => {
   textContainer.appendChild(taskDescription);
   container.appendChild(textContainer);
 
+  // intended for dueDate
   let div = document.createElement("div");
   div.classList.add("small-font");
-  div.textContent = date;
+  div.textContent = dueDate;
   container.appendChild(div);
 
-  // I plan to add priority inside fancy icon and add margin
+  // intended for favourite
   div = document.createElement("div");
   div.classList.add("small-font");
-  div.textContent = priority;
+  div.textContent = favourite;
   container.appendChild(div);
 
+  // intended for editing
   span = document.createElement("span");
   span.classList.add("material-symbols-outlined");
   span.textContent = "more_vert";
@@ -137,15 +141,30 @@ const contentSection = (currentPage, tasksList) => {
 
   // the sample button
   container.appendChild(createTitle(currentPage));
-  container.appendChild(
-    createTaskItem("tempTitle", "tempDescription", "date format undecided", 5)
-  );
 
-  
+  for (let i = 0; i < tasksList.length; i++) {
+    container.appendChild(
+      createTaskItem(
+        tasksList[i].title,
+        tasksList[i].description,
+        tasksList[i].dueDate,
+        tasksList[i].isComplete,
+        tasksList[i].favourite
+      )
+    );
+  }
 
-
-  container.appendChild(createAddTaskButton());
-  container.appendChild(createAddTaskForm());
+  if (
+    !(
+      currentPage === "All Tasks" ||
+      currentPage === "Today" ||
+      currentPage === "Next 7 Days"
+    )
+  ) {
+    container.appendChild(createAddTaskButton());
+    container.appendChild(createAddTaskForm());
+    console.log(currentPage !== "All Tasks");
+  }
 
   return container;
 };

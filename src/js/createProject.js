@@ -1,12 +1,16 @@
-function comparePriority(a, b) {
-  if (a.priority < b.priority) {
-    return -1;
-  }
-  if (a.priority > b.priority) {
-    return 1;
-  }
-  return 0;
-}
+// some sample code for sorting
+// function comparePriority(a, b) {
+//   if (a.priority < b.priority) {
+//     return -1;
+//   }
+//   if (a.priority > b.priority) {
+//     return 1;
+//   }
+//   return 0;
+// }
+
+//   // sort toDos --- currently does not work as intended
+//   const sortToDos = () => toDos.sort(comparePriority);
 
 // i will need a global array to store projects
 const createProject = (title) => {
@@ -23,9 +27,6 @@ const createProject = (title) => {
     }
   };
 
-  // sort toDos --- currently does not work as intended
-  const sortToDos = () => toDos.sort(comparePriority);
-
   // delete a todo
   const deleteToDo = (index) => toDos.splice(index, 1);
 
@@ -34,7 +35,7 @@ const createProject = (title) => {
     project[index] = toDo;
   };
 
-  return { title, toDos, addToDo, addToDos, sortToDos, deleteToDo, updateToDo };
+  return { title, toDos, addToDo, addToDos, deleteToDo, updateToDo };
 };
 
 export default createProject;

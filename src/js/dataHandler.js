@@ -19,17 +19,19 @@ const storeSampleData = () => {
   console.log(projectsArray);
 
   updateStorage(projectsArray);
+}
 
-  // retrieve localStorage and store in projectsArray
+const retrieveProjectsArrayFromStorage = () => {
   let retrievedProjectsArray = [];
   let retrievedData = retrieveStorage();
   for (let i = 0; i < retrievedData.length; i++) {
     retrievedProjectsArray[i] = createProject(retrievedData[i].title);
     retrievedProjectsArray[i].addToDos(retrievedData[i].toDos);
   }
+  // for testing only
   console.log(retrievedProjectsArray);
+  return retrievedProjectsArray;
 }
-
 
 const checkDuplicates = (array, string) => {
   let arrayTitles = array.map((element) => element.title);
@@ -143,4 +145,4 @@ const addAddTaskFormEventListeners = () => {
   });
 };
 
-export { storeSampleData, addAddProjectFormEventListeners, addAddTaskFormEventListeners };
+export { storeSampleData, retrieveProjectsArrayFromStorage, addAddProjectFormEventListeners, addAddTaskFormEventListeners };

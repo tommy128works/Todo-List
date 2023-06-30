@@ -1,9 +1,9 @@
 // make dummy Title amd dummy task for now
 
-const createTitle = () => {
+const createTitle = (currentPage) => {
   let div = document.createElement("div");
   div.classList.add("large-font");
-  div.textContent = "All Tasks"; // This title changes based on page
+  div.textContent = currentPage;
 
   return div;
 };
@@ -131,16 +131,20 @@ const createAddTaskForm = () => {
   return form;
 };
 
-const contentSection = () => {
+const contentSection = (currentPage, tasksList) => {
   let container = document.createElement("div");
   container.classList.add("content-section");
 
-  container.appendChild(createTitle());
+  // the sample button
+  container.appendChild(createTitle(currentPage));
   container.appendChild(
     createTaskItem("tempTitle", "tempDescription", "date format undecided", 5)
   );
-  container.appendChild(createAddTaskButton());
 
+  
+
+
+  container.appendChild(createAddTaskButton());
   container.appendChild(createAddTaskForm());
 
   return container;

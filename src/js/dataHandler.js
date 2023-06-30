@@ -45,10 +45,36 @@ const exportProjectArraysTitles = () => {
   return projectTitles;
 };
 
-const loadPage = (projectsArray) => {
+const loadPage = (currentPage, projectsArray) => {
   let projectsTitles = [];
   for (let i = 0; i < projectsArray.length; i++) {
     projectsTitles.push(projectsArray[i].title);
+  }
+
+  // need to make cases to populate the tasks that meet the criteria
+  // need to filter tasks while retaining properties
+  let tasksList = [];
+  console.log(projectsArray);
+
+  switch(currentPage) {
+    case "All Tasks":
+      for (let i = 0; i < projectsArray.length; i++) {
+        for (let x = 0; x < projectsArray[i].toDos.length; x++) {
+          tasksList.push(projectsArray[i].toDos[x]);
+        }
+      }
+      break;
+
+    case "Today":
+      break; 
+
+    case "Next 7 Days":
+      break;
+
+    default:
+      // for specific projects
+      // what if empty?
+
   }
 
   let mainContainer = document.getElementById("main-container");
@@ -60,7 +86,7 @@ const loadPage = (projectsArray) => {
   sideBarContainer.appendChild(navigationToDos());
   sideBarContainer.appendChild(navigationProjects(projectsTitles));
   mainContainer.appendChild(sideBarContainer);
-  mainContainer.appendChild(contentSection());
+  mainContainer.appendChild(contentSection(currentPage));
 
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
@@ -78,7 +104,7 @@ const onStartUp = () => {
     projectsArray = retrieveProjectsArrayFromStorage();
   }
 
-  loadPage(projectsArray);
+  loadPage("All Tasks", projectsArray);
 
 };
 

@@ -43,10 +43,7 @@ const loadPage = (currentPage) => {
     projectsTitles.push(projectsArray[i].title);
   }
 
-  // need to make cases to populate the tasks that meet the criteria
-  // need to filter tasks while retaining properties
   let tasksList = [];
-
   switch (currentPage) {
     case "All Tasks":
       for (let i = 0; i < projectsArray.length; i++) {
@@ -63,8 +60,13 @@ const loadPage = (currentPage) => {
       break;
 
     default:
-    // for specific projects
-    // what if empty?
+      let projectIndex = projectsArray.findIndex(
+        (project) => project.title === currentPage
+      );
+      for (let i = 0; i < projectsArray[projectIndex].toDos.length; i++) {
+        tasksList.push(projectsArray[projectIndex].toDos[i]);
+      }
+
   }
   tasksList.sort((a, b) => {
     return new Date(a.dueDate) - new Date(b.dueDate);

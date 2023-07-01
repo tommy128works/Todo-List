@@ -14,14 +14,14 @@ let projectsArray = [];
 
 const storeSampleData = () => {
   projectsArray.push(createProject("School"));
-  projectsArray[0].addToDo(createToDo("Assignment"));
-  projectsArray[0].addToDo(createToDo("Study for Test"));
-  projectsArray[0].addToDo(createToDo("Project"));
+  projectsArray[0].addToDo(createToDo("Assignment", null, "2023-07-08"));
+  projectsArray[0].addToDo(createToDo("Study for Test", null, "2023-07-01"));
+  projectsArray[0].addToDo(createToDo("Project", null, "2023-07-02"));
 
   projectsArray.push(createProject("Entertainment"));
-  projectsArray[1].addToDo(createToDo("TV"));
-  projectsArray[1].addToDo(createToDo("Movies"));
-  projectsArray[1].addToDo(createToDo("Books"));
+  projectsArray[1].addToDo(createToDo("TV", null, "2023-07-06"));
+  projectsArray[1].addToDo(createToDo("Movies", null, "2023-07-04"));
+  projectsArray[1].addToDo(createToDo("Books", null, "2023-07-05"));
 
   updateStorage(projectsArray);
 };
@@ -45,7 +45,6 @@ const loadPage = (currentPage) => {
 
   // need to make cases to populate the tasks that meet the criteria
   // need to filter tasks while retaining properties
-  // THIS IS WHERE I CAN SORT THE TASKS BY PRIORITY, DATE, ETC.
   let tasksList = [];
 
   switch (currentPage) {
@@ -67,6 +66,9 @@ const loadPage = (currentPage) => {
     // for specific projects
     // what if empty?
   }
+  tasksList.sort((a, b) => {
+    return new Date(a.dueDate) - new Date(b.dueDate);
+  })
 
   let mainContainer = document.getElementById("main-container");
   mainContainer.innerHTML = "";
@@ -190,7 +192,6 @@ const addAddTaskFormEventListeners = () => {
         createToDo(taskTitle.value, taskDetails.value, taskDate.value)
       );
       updateStorage(projectsArray);
-      console.log(projectsArray[projectIndex]);
 
       form.style.display = "none";
       addBtn.style.display = "flex";

@@ -3,6 +3,7 @@
 const createTitle = (currentPage) => {
   let div = document.createElement("div");
   div.classList.add("large-font");
+  div.setAttribute("id", "content-title");
   div.textContent = currentPage;
 
   return div;
@@ -106,7 +107,7 @@ const createAddTaskForm = () => {
   form.appendChild(label);
 
   input = document.createElement("input");
-  input.setAttribute("type", "text");
+  input.setAttribute("type", "date");
   input.setAttribute("name", "task_date");
   input.setAttribute("id", "task_date");
   form.appendChild(input);
@@ -139,7 +140,6 @@ const contentSection = (currentPage, tasksList) => {
   let container = document.createElement("div");
   container.classList.add("content-section");
 
-  // the sample button
   container.appendChild(createTitle(currentPage));
 
   for (let i = 0; i < tasksList.length; i++) {

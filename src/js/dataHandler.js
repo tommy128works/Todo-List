@@ -92,7 +92,6 @@ const loadPage = (currentPage) => {
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
   addNavigationButtonsEventListeners();
-
 };
 
 const onStartUp = () => {
@@ -135,10 +134,6 @@ const addAddProjectFormEventListeners = () => {
       projectsArray.push(createProject(projectName.value));
       updateStorage(projectsArray);
 
-      // // for testing only
-      // console.log(displayStorage());
-      // console.log(projectsArray);
-
       form.style.display = "none";
       addBtn.style.display = "flex";
       projectName.value = "";
@@ -179,17 +174,23 @@ const addAddTaskFormEventListeners = () => {
   });
 
   submitBtn.addEventListener("click", (event) => {
+    let currentProject = document.getElementById("content-title").textContent;
+    let projectIndex = projectsArray.findIndex(
+      (project) => project.title === currentProject
+    );
+
     if (taskTitle.value === "") {
       alert("Task title cannot be empty!");
-    }
-    // Need to assume project context which depends on what page the user is currently on
-
-    // else if (checkDuplicates(projectsArray, projectName.value)) {
-    //   alert("Project names must be different");
-    // }
-    else {
-      // need to call projectsArray[index].addToDo();
-      // testProject.addToDo(createToDo(taskTitle.value));
+    } else if (
+      checkDuplicates(projectsArray[projectIndex].toDos, taskTitle.value)
+    ) {
+      alert("Task names must be different");
+    } else {
+      projectsArray[projectIndex].addToDo(
+        createToDo(taskTitle.value, taskDetails.value, taskDate.value)
+      );
+      updateStorage(projectsArray);
+      console.log(projectsArray[projectIndex]);
 
       form.style.display = "none";
       addBtn.style.display = "flex";
@@ -226,9 +227,8 @@ const addNavigationButtonsEventListeners = () => {
     element.addEventListener("click", (event) => {
       loadPage(element.dataset.title);
     });
-  })
-}
-
+  });
+};
 
 export {
   storeSampleData,

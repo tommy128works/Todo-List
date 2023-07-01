@@ -3,7 +3,13 @@
 
 const createButton = (title) => {
   let btn = document.createElement("button");
-  btn.classList.add("btn", "btn-secondary", "btn-primary", "sidebar-item", "navigation-button");
+  btn.classList.add(
+    "btn",
+    "btn-secondary",
+    "btn-primary",
+    "sidebar-item",
+    "navigation-button"
+  );
   btn.classList.toggle("btn-primary");
   btn.setAttribute("type", "button");
   btn.setAttribute("data-title", title);

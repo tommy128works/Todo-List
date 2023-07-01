@@ -1,7 +1,7 @@
 const createToDo = (
   title,
   description = null,
-  dueDate = null,
+  dueDate = "No Due Date",
   isComplete = false,
   favourite = false
 ) => {

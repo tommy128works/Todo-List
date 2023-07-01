@@ -163,7 +163,6 @@ const contentSection = (currentPage, tasksList) => {
   ) {
     container.appendChild(createAddTaskButton());
     container.appendChild(createAddTaskForm());
-    console.log(currentPage !== "All Tasks");
   }
 
   return container;

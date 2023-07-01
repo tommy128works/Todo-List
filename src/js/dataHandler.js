@@ -37,15 +37,7 @@ const retrieveProjectsArrayFromStorage = () => {
   return retrievedProjectsArray;
 };
 
-const exportProjectArraysTitles = () => {
-  let projectTitles = [];
-  for (let i = 0; i < projectsArray.length; i++) {
-    projectTitles.push(projectsArray[i].title);
-  }
-  return projectTitles;
-};
-
-const loadPage = (currentPage, projectsArray) => {
+const loadPage = (currentPage) => {
   let projectsTitles = [];
   for (let i = 0; i < projectsArray.length; i++) {
     projectsTitles.push(projectsArray[i].title);
@@ -55,7 +47,6 @@ const loadPage = (currentPage, projectsArray) => {
   // need to filter tasks while retaining properties
   // THIS IS WHERE I CAN SORT THE TASKS BY PRIORITY, DATE, ETC.
   let tasksList = [];
-  console.log(projectsArray);
 
   switch (currentPage) {
     case "All Tasks":
@@ -64,7 +55,6 @@ const loadPage = (currentPage, projectsArray) => {
           tasksList.push(projectsArray[i].toDos[x]);
         }
       }
-      console.log(tasksList);
       break;
 
     case "Today":
@@ -101,6 +91,7 @@ const loadPage = (currentPage, projectsArray) => {
 
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
+  addNavigationButtonsEventListeners();
 
 };
 
@@ -228,10 +219,20 @@ const addAddTaskFormEventListeners = () => {
   });
 };
 
+const addNavigationButtonsEventListeners = () => {
+  let navigationButtons = document.querySelectorAll(".navigation-button");
+
+  navigationButtons.forEach((element) => {
+    element.addEventListener("click", (event) => {
+      loadPage(element.dataset.title);
+    });
+  })
+}
+
+
 export {
   storeSampleData,
   retrieveProjectsArrayFromStorage,
-  exportProjectArraysTitles,
   onStartUp,
   addAddProjectFormEventListeners,
   addAddTaskFormEventListeners,

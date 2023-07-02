@@ -12,6 +12,12 @@ import { addToggleSidebarEventListener } from "./header";
 
 let projectsArray = [];
 
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+}
+
 const storeSampleData = () => {
   projectsArray.push(createProject("School"));
   projectsArray[0].addToDo(createToDo("Assignment", null, "2023-07-08"));
@@ -19,9 +25,9 @@ const storeSampleData = () => {
   projectsArray[0].addToDo(createToDo("Project", null, "2023-07-02"));
 
   projectsArray.push(createProject("Entertainment"));
-  projectsArray[1].addToDo(createToDo("TV", null, "2023-07-06"));
+  projectsArray[1].addToDo(createToDo("TV", null, "2023-07-09"));
   projectsArray[1].addToDo(createToDo("Movies", null, "2023-07-04"));
-  projectsArray[1].addToDo(createToDo("Books", null, "2023-07-05"));
+  projectsArray[1].addToDo(createToDo("Books", null, "2023-06-30"));
 
   updateStorage(projectsArray);
 };
@@ -54,7 +60,9 @@ const loadPage = (currentPage) => {
       break;
 
     case "Today":
-      let dateToday = new Date();
+      let dateTemp2 = new Date();
+      let dateToday = dateTemp2.addDays(-1);
+
 
       for (let i = 0; i < projectsArray.length; i++) {
         for (let x = 0; x < projectsArray[i].toDos.length; x++) {
@@ -68,6 +76,23 @@ const loadPage = (currentPage) => {
       break;
 
     case "Next 7 Days":
+      let dateTemp = new Date();
+      dateTemp.setHours(0, 0, 0, 0);
+      let date2Days = dateTemp.addDays(-2);
+      let date7Days = dateTemp.addDays(7);
+      date7Days.setHours(0, 0, 0, 0);
+      
+      for (let i = 0; i < projectsArray.length; i++) {
+        for (let x = 0; x < projectsArray[i].toDos.length; x++) {
+          let dateTask = new Date(projectsArray[i].toDos[x].dueDate);
+          dateTask.setHours(0, 0, 0, 0);
+
+          if (dateTask < date7Days && dateTask > date2Days) {
+            tasksList.push(projectsArray[i].toDos[x]);
+          }
+        }
+      }
+
       break;
 
     default:
@@ -204,6 +229,7 @@ const addAddTaskFormEventListeners = () => {
         createToDo(taskTitle.value, taskDetails.value, taskDate.value)
       );
       updateStorage(projectsArray);
+      loadPage(currentProject);
 
       form.style.display = "none";
       addBtn.style.display = "flex";

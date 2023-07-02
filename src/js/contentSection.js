@@ -36,7 +36,8 @@ const createTaskItem = (title, description, dueDate, isComplete, favourite) => {
   // intended for dueDate
   let div = document.createElement("div");
   div.classList.add("small-font");
-  div.textContent = dueDate;
+  let date = new Date(dueDate)
+  div.textContent = date.toDateString();
   container.appendChild(div);
 
   // intended for favourite

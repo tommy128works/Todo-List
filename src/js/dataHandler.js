@@ -54,6 +54,17 @@ const loadPage = (currentPage) => {
       break;
 
     case "Today":
+      let dateToday = new Date();
+
+      for (let i = 0; i < projectsArray.length; i++) {
+        for (let x = 0; x < projectsArray[i].toDos.length; x++) {
+          let dateTask = new Date(projectsArray[i].toDos[x].dueDate);
+
+          if (dateTask.toDateString() === dateToday.toDateString()) {
+            tasksList.push(projectsArray[i].toDos[x]);
+          }
+        }
+      }
       break;
 
     case "Next 7 Days":
@@ -66,11 +77,10 @@ const loadPage = (currentPage) => {
       for (let i = 0; i < projectsArray[projectIndex].toDos.length; i++) {
         tasksList.push(projectsArray[projectIndex].toDos[i]);
       }
-
   }
   tasksList.sort((a, b) => {
     return new Date(a.dueDate) - new Date(b.dueDate);
-  })
+  });
 
   let mainContainer = document.getElementById("main-container");
   mainContainer.innerHTML = "";

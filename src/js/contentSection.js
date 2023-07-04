@@ -9,15 +9,18 @@ const createTitle = (currentPage) => {
 
 // need to add current page for project but still work with task filters
 const createTaskItem = (title, description, dueDate, project) => {
-  let container = document.createElement("div");
+  let container = document.createElement("span");
   container.classList.add("task-item");
   container.setAttribute("data-project", project);
   container.setAttribute("data-task", title);
 
   // intended for isComplete
   let span = document.createElement("span");
-  span.classList.add("material-symbols-outlined", "is-complete-icon");
-  // span.textContent = "radio_button_unchecked"; // delete this and update it using function
+  span.classList.add(
+    "material-symbols-outlined",
+    "is-complete-icon",
+    "prevent-select"
+  );
   container.appendChild(span);
 
   let textContainer = document.createElement("div");

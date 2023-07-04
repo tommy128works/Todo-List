@@ -21,8 +21,12 @@ Date.prototype.addDays = function (days) {
 const storeSampleData = () => {
   projectsArray.push(createProject("School"));
   projectsArray[0].addToDo(createToDo("Assignment", null, "2023-07-08", true));
-  projectsArray[0].addToDo(createToDo("Study for Test", null, "2023-07-01", false, true));
-  projectsArray[0].addToDo(createToDo("Project", null, "2023-07-02", true, true));
+  projectsArray[0].addToDo(
+    createToDo("Study for Test", null, "2023-07-01", false, true)
+  );
+  projectsArray[0].addToDo(
+    createToDo("Project", null, "2023-07-02", true, true)
+  );
 
   projectsArray.push(createProject("Entertainment"));
   projectsArray[1].addToDo(createToDo("TV", null, "2023-07-09"));
@@ -146,7 +150,7 @@ const onStartUp = () => {
   checkStorageAvailability();
 
   // for development purpose only
-  storeSampleData();
+  // storeSampleData();
 
   if (Object.keys(localStorage).length > 0) {
     projectsArray = retrieveProjectsArrayFromStorage();
@@ -299,12 +303,17 @@ const addIsCompleteIconEventListeners = () => {
       element.textContent = "radio_button_unchecked";
     }
 
-    // add click event to update todo property
-    // update database and reload page
-  
-    // element.addEventListener("click", (event) => {
-    //   loadPage(element.dataset.title);
-    // });
+    element.addEventListener("click", (event) => {
+      projectsArray[projectIndex].toDos[taskIndex].isComplete =
+        !projectsArray[projectIndex].toDos[taskIndex].isComplete;
+      updateStorage(projectsArray);
+
+      if (element.textContent === "check_circle") {
+        element.textContent = "radio_button_unchecked";
+      } else {
+        element.textContent = "check_circle";
+      }
+    });
   });
 };
 

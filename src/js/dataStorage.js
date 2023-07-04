@@ -36,14 +36,6 @@ function checkStorageAvailability() {
   }
 }
 
-// test if storage has been populated
-// (simple if statement checking if localStorage is empty)
-// if yes, retrieve all stored projects
-
-// add project objects to storage
-// argument = global array of objects
-// clear > store
-
 const updateStorage = (projectsArray) => {
   localStorage.clear();
   projectsArray.forEach((project) => {
@@ -51,8 +43,6 @@ const updateStorage = (projectsArray) => {
   });
 };
 
-// retrieve data from storage to display (part of refresh page function)
-// for now, display all projects
 const retrieveStorage = () => {
   let values = [],
     keys = Object.keys(localStorage);
@@ -63,11 +53,5 @@ const retrieveStorage = () => {
 
   return values;
 };
-
-// delete everything function
-
-// delete specific project function
-
-// delete specific todo function
 
 export { checkStorageAvailability, updateStorage, retrieveStorage };

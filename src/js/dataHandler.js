@@ -144,6 +144,7 @@ const loadPage = (currentPage) => {
   addAddProjectFormEventListeners();
   addNavigationButtonsEventListeners();
   addIsCompleteIconEventListeners();
+  addFavouriteIconEventListeners();
 };
 
 const onStartUp = () => {
@@ -287,9 +288,6 @@ const addIsCompleteIconEventListeners = () => {
   let icons = document.querySelectorAll(".is-complete-icon");
 
   icons.forEach((element) => {
-    // on start up set the current icon based on stored todo property
-    // needs project index, todo index = using data attributes?
-    // console.log(element.parentElement.dataset.project);
     let projectIndex = projectsArray.findIndex(
       (project) => project.title === element.parentElement.dataset.project
     );
@@ -315,6 +313,37 @@ const addIsCompleteIconEventListeners = () => {
       } else {
         element.textContent = "check_circle";
         element.nextSibling.style.textDecoration = "line-through";
+      }
+    });
+  });
+};
+
+const addFavouriteIconEventListeners = () => {
+  let icons = document.querySelectorAll(".favourite-icon");
+
+  icons.forEach((element) => {
+    let projectIndex = projectsArray.findIndex(
+      (project) => project.title === element.parentElement.dataset.project
+    );
+    let taskIndex = projectsArray[projectIndex].toDos.findIndex(
+      (task) => task.title === element.parentElement.dataset.task
+    );
+
+    if (projectsArray[projectIndex].toDos[taskIndex].favourite === true) {
+      element.textContent = "stars";
+    } else {
+      element.textContent = "star";
+    }
+
+    element.addEventListener("click", (event) => {
+      projectsArray[projectIndex].toDos[taskIndex].favourite =
+        !projectsArray[projectIndex].toDos[taskIndex].favourite;
+      updateStorage(projectsArray);
+
+      if (element.textContent === "stars") {
+        element.textContent = "star";
+      } else {
+        element.textContent = "stars";
       }
     });
   });

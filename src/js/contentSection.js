@@ -44,10 +44,12 @@ const createTaskItem = (title, description, dueDate, project) => {
   container.appendChild(div);
 
   // intended for favourite
-  div = document.createElement("div");
-  div.classList.add("small-font");
-  // div.textContent = favourite;
-  container.appendChild(div);
+  span = document.createElement("span");
+  span.classList.add("material-symbols-outlined", "favourite-icon",
+  "prevent-select");
+  // span.textContent = "stars";
+  span.textContent = "star";
+  container.appendChild(span);
 
   // intended for editing
   span = document.createElement("span");

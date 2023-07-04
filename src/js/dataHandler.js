@@ -240,8 +240,13 @@ const addAddTaskFormEventListeners = () => {
     ) {
       alert("Task names must be different");
     } else {
+      let dueDate = taskDate.value;
+      if (dueDate === "") {
+        dueDate = "No Due Date";
+      }
+
       projectsArray[projectIndex].addToDo(
-        createToDo(taskTitle.value, taskDetails.value, taskDate.value)
+        createToDo(taskTitle.value, taskDetails.value, dueDate)
       );
       updateStorage(projectsArray);
       loadPage(currentProject);

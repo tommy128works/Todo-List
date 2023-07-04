@@ -14,7 +14,6 @@ const createTaskItem = (title, description, dueDate, project) => {
   container.setAttribute("data-project", project);
   container.setAttribute("data-task", title);
 
-  // intended for isComplete
   let span = document.createElement("span");
   span.classList.add(
     "material-symbols-outlined",
@@ -26,7 +25,6 @@ const createTaskItem = (title, description, dueDate, project) => {
   let textContainer = document.createElement("div");
   textContainer.classList.add("task-item-text");
 
-  // intended for title and description
   let taskTitle = document.createElement("div");
   taskTitle.classList.add("small-font");
   taskTitle.textContent = title;
@@ -39,16 +37,13 @@ const createTaskItem = (title, description, dueDate, project) => {
 
   // intended for dueDate
   let div = document.createElement("div");
-  div.classList.add("small-font");
+  div.classList.add("smallest-font", "task-due-date");
   div.textContent = dueDate;
   container.appendChild(div);
 
-  // intended for favourite
   span = document.createElement("span");
   span.classList.add("material-symbols-outlined", "favourite-icon",
   "prevent-select");
-  // span.textContent = "stars";
-  span.textContent = "star";
   container.appendChild(span);
 
   // intended for editing

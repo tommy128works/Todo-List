@@ -117,6 +117,13 @@ footer {
   flex: 1;
 }
 
+.task-due-date {
+  border-radius: 8px;
+  border: 2px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+
 .add-task-button {
   display: flex;
   gap: 10px;

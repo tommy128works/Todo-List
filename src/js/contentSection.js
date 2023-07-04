@@ -7,9 +7,12 @@ const createTitle = (currentPage) => {
   return div;
 };
 
-const createTaskItem = (title, description, dueDate, isComplete, favourite) => {
+// need to add current page for project but still work with task filters
+const createTaskItem = (title, description, dueDate, project) => {
   let container = document.createElement("div");
   container.classList.add("task-item");
+  container.setAttribute("data-project", project);
+  container.setAttribute("data-task", title);
 
   // intended for isComplete
   let span = document.createElement("span");
@@ -40,7 +43,7 @@ const createTaskItem = (title, description, dueDate, isComplete, favourite) => {
   // intended for favourite
   div = document.createElement("div");
   div.classList.add("small-font");
-  div.textContent = favourite;
+  // div.textContent = favourite;
   container.appendChild(div);
 
   // intended for editing
@@ -146,8 +149,7 @@ const contentSection = (currentPage, tasksList) => {
         tasksList[i].title,
         tasksList[i].description,
         tasksList[i].dueDate,
-        tasksList[i].isComplete,
-        tasksList[i].favourite
+        tasksList[i].project
       )
     );
   }

@@ -50,11 +50,14 @@ const loadPage = (currentPage) => {
   }
 
   let tasksList = [];
+  let count = 0;
   switch (currentPage) {
     case "All Tasks":
       for (let i = 0; i < projectsArray.length; i++) {
         for (let x = 0; x < projectsArray[i].toDos.length; x++) {
           tasksList.push(projectsArray[i].toDos[x]);
+          tasksList[count].project = projectsArray[i].title;
+          count++;
         }
       }
       break;
@@ -63,13 +66,14 @@ const loadPage = (currentPage) => {
       let dateTemp2 = new Date();
       let dateToday = dateTemp2.addDays(-1);
 
-
       for (let i = 0; i < projectsArray.length; i++) {
         for (let x = 0; x < projectsArray[i].toDos.length; x++) {
           let dateTask = new Date(projectsArray[i].toDos[x].dueDate);
 
           if (dateTask.toDateString() === dateToday.toDateString()) {
             tasksList.push(projectsArray[i].toDos[x]);
+            tasksList[count].project = projectsArray[i].title;
+            count++;
           }
         }
       }
@@ -89,6 +93,8 @@ const loadPage = (currentPage) => {
 
           if (dateTask < date7Days && dateTask > date2Days) {
             tasksList.push(projectsArray[i].toDos[x]);
+            tasksList[count].project = projectsArray[i].title;
+            count++;
           }
         }
       }
@@ -101,6 +107,8 @@ const loadPage = (currentPage) => {
       );
       for (let i = 0; i < projectsArray[projectIndex].toDos.length; i++) {
         tasksList.push(projectsArray[projectIndex].toDos[i]);
+        tasksList[count].project = projectsArray[projectIndex].title;
+        count++;
       }
   }
   tasksList.sort((a, b) => {
@@ -275,6 +283,9 @@ const addIsCompleteIconEventListeners = () => {
 
   icons.forEach((element) => {
     // set the current icon based on stored todo property
+    // needs project index, todo index = using data attributes?
+    // what if tasks are displayed on different pages?
+    // if, else statement
 
 
     // add click event to update todo property, database and change visual

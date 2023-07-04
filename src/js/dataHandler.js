@@ -299,6 +299,7 @@ const addIsCompleteIconEventListeners = () => {
 
     if (projectsArray[projectIndex].toDos[taskIndex].isComplete === true) {
       element.textContent = "check_circle";
+      element.nextSibling.style.textDecoration = "line-through";
     } else {
       element.textContent = "radio_button_unchecked";
     }
@@ -310,8 +311,10 @@ const addIsCompleteIconEventListeners = () => {
 
       if (element.textContent === "check_circle") {
         element.textContent = "radio_button_unchecked";
+        element.nextSibling.style.textDecoration = "";
       } else {
         element.textContent = "check_circle";
+        element.nextSibling.style.textDecoration = "line-through";
       }
     });
   });

@@ -1,5 +1,3 @@
-// make dummy Title amd dummy task for now
-
 const createTitle = (currentPage) => {
   let div = document.createElement("div");
   div.classList.add("large-font");
@@ -15,8 +13,8 @@ const createTaskItem = (title, description, dueDate, isComplete, favourite) => {
 
   // intended for isComplete
   let span = document.createElement("span");
-  span.classList.add("material-symbols-outlined");
-  span.textContent = "radio_button_unchecked";
+  span.classList.add("material-symbols-outlined", "is-complete-icon");
+  span.textContent = "radio_button_unchecked"; // delete this and update it using function
   container.appendChild(span);
 
   let textContainer = document.createElement("div");

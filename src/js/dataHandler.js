@@ -172,6 +172,7 @@ const addAddProjectFormEventListeners = () => {
     } else {
       projectsArray.push(createProject(projectName.value));
       updateStorage(projectsArray);
+      loadPage(projectName.value);
 
       form.style.display = "none";
       addBtn.style.display = "flex";
@@ -188,10 +189,10 @@ const addAddProjectFormEventListeners = () => {
   form.addEventListener("keydown", (event) => {
     switch (event.key) {
       case "Enter":
-        document.getElementById("submit-project-button").click();
+        submitBtn.click();
         break;
       case "Escape":
-        document.getElementById("cancel-project-button").click();
+        cancelBtn.click();
         break;
     }
   });
@@ -250,10 +251,10 @@ const addAddTaskFormEventListeners = () => {
   form.addEventListener("keydown", (event) => {
     switch (event.key) {
       case "Enter":
-        document.getElementById("submit-task-button").click();
+        submitBtn.click();
         break;
       case "Escape":
-        document.getElementById("cancel-task-button").click();
+        cancelBtn.click();
         break;
     }
   });
@@ -269,10 +270,19 @@ const addNavigationButtonsEventListeners = () => {
   });
 };
 
+const addIsCompleteIconEventListeners = () => {
+  let icons = document.querySelectorAll(".is-complete-icon");
+
+  icons.forEach((element) => {
+    // set the current icon based on stored todo property
+
+
+    // add click event to update todo property, database and change visual
+
+  })
+
+}
+
 export {
-  storeSampleData,
-  retrieveProjectsArrayFromStorage,
   onStartUp,
-  addAddProjectFormEventListeners,
-  addAddTaskFormEventListeners,
 };

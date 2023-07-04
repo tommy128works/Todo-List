@@ -12,17 +12,17 @@ import { addToggleSidebarEventListener } from "./header";
 
 let projectsArray = [];
 
-Date.prototype.addDays = function(days) {
+Date.prototype.addDays = function (days) {
   var date = new Date(this.valueOf());
   date.setDate(date.getDate() + days);
   return date;
-}
+};
 
 const storeSampleData = () => {
   projectsArray.push(createProject("School"));
-  projectsArray[0].addToDo(createToDo("Assignment", null, "2023-07-08"));
-  projectsArray[0].addToDo(createToDo("Study for Test", null, "2023-07-01"));
-  projectsArray[0].addToDo(createToDo("Project", null, "2023-07-02"));
+  projectsArray[0].addToDo(createToDo("Assignment", null, "2023-07-08", true));
+  projectsArray[0].addToDo(createToDo("Study for Test", null, "2023-07-01", false, true));
+  projectsArray[0].addToDo(createToDo("Project", null, "2023-07-02", true, true));
 
   projectsArray.push(createProject("Entertainment"));
   projectsArray[1].addToDo(createToDo("TV", null, "2023-07-09"));
@@ -85,7 +85,7 @@ const loadPage = (currentPage) => {
       let date2Days = dateTemp.addDays(-2);
       let date7Days = dateTemp.addDays(7);
       date7Days.setHours(0, 0, 0, 0);
-      
+
       for (let i = 0; i < projectsArray.length; i++) {
         for (let x = 0; x < projectsArray[i].toDos.length; x++) {
           let dateTask = new Date(projectsArray[i].toDos[x].dueDate);
@@ -139,6 +139,7 @@ const loadPage = (currentPage) => {
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
   addNavigationButtonsEventListeners();
+  addIsCompleteIconEventListeners();
 };
 
 const onStartUp = () => {
@@ -282,18 +283,29 @@ const addIsCompleteIconEventListeners = () => {
   let icons = document.querySelectorAll(".is-complete-icon");
 
   icons.forEach((element) => {
-    // set the current icon based on stored todo property
+    // on start up set the current icon based on stored todo property
     // needs project index, todo index = using data attributes?
-    // what if tasks are displayed on different pages?
-    // if, else statement
+    // console.log(element.parentElement.dataset.project);
+    let projectIndex = projectsArray.findIndex(
+      (project) => project.title === element.parentElement.dataset.project
+    );
+    let taskIndex = projectsArray[projectIndex].toDos.findIndex(
+      (task) => task.title === element.parentElement.dataset.task
+    );
 
+    if (projectsArray[projectIndex].toDos[taskIndex].isComplete === true) {
+      element.textContent = "check_circle";
+    } else {
+      element.textContent = "radio_button_unchecked";
+    }
 
-    // add click event to update todo property, database and change visual
-
-  })
-
-}
-
-export {
-  onStartUp,
+    // add click event to update todo property
+    // update database and reload page
+  
+    // element.addEventListener("click", (event) => {
+    //   loadPage(element.dataset.title);
+    // });
+  });
 };
+
+export { onStartUp };

@@ -17,7 +17,7 @@ const createTaskItem = (title, description, dueDate, project) => {
   // intended for isComplete
   let span = document.createElement("span");
   span.classList.add("material-symbols-outlined", "is-complete-icon");
-  span.textContent = "radio_button_unchecked"; // delete this and update it using function
+  // span.textContent = "radio_button_unchecked"; // delete this and update it using function
   container.appendChild(span);
 
   let textContainer = document.createElement("div");

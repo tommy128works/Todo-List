@@ -174,7 +174,6 @@ const addAddProjectFormEventListeners = () => {
 
   addBtn.addEventListener("click", (event) => {
     form.style.display = "block";
-    addBtn.style.display = "none";
     projectName.focus();
   });
 

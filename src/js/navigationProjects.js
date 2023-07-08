@@ -48,22 +48,68 @@ const createAddButton = () => {
   return btn;
 };
 
-const createAddProjectForm = () => {
-  let form = document.createElement("form");
-  form.setAttribute("id", "project-form");
-  form.classList.add("project-form");
+// const createAddProjectForm = () => {
+//   let form = document.createElement("form");
+//   form.setAttribute("id", "project-form");
+//   form.classList.add("project-form");
 
+//   let label = document.createElement("label");
+//   label.setAttribute("for", "project_name");
+//   label.textContent = "*Project Name:";
+//   form.appendChild(label);
+
+//   let input = document.createElement("input");
+//   input.setAttribute("type", "text");
+//   input.setAttribute("name", "project_name");
+//   input.setAttribute("id", "project_name");
+//   input.required = true;
+//   form.appendChild(input);
+
+//   let btnsContainer = document.createElement("div");
+//   btnsContainer.classList.add("btns-container");
+
+//   let submitBtn = document.createElement("button");
+//   // "submit" submits the form and refreshes page, but this specific application may not need to submit to a real database
+//   // if no real database, you can set type = "button" to stop refreshes
+//   submitBtn.setAttribute("type", "button");
+//   submitBtn.setAttribute("id", "submit-project-button");
+//   submitBtn.textContent = "Submit";
+//   submitBtn.classList.add("btn", "btn-success");
+//   btnsContainer.appendChild(submitBtn);
+
+//   let cancelBtn = document.createElement("button");
+//   cancelBtn.setAttribute("id", "cancel-project-button");
+//   cancelBtn.setAttribute("type", "button");
+//   cancelBtn.textContent = "Cancel";
+//   cancelBtn.classList.add("btn", "btn-danger");
+//   btnsContainer.appendChild(cancelBtn);
+
+//   form.appendChild(btnsContainer);
+
+//   return form;
+// };
+
+const createAddProjectFormModal = () => {
+  let projectModal = document.createElement("div");
+  projectModal.setAttribute("id", "project-modal");
+  projectModal.classList.add("project-modal");
+
+  let projectModalForm = document.createElement("form");
+  projectModal.setAttribute("id", "project-form"); // this might be used to open the modal so this may be moved
+  projectModalForm.classList.add("project-modal-content");
+  
   let label = document.createElement("label");
   label.setAttribute("for", "project_name");
   label.textContent = "*Project Name:";
-  form.appendChild(label);
+  projectModalForm.appendChild(label);
 
   let input = document.createElement("input");
   input.setAttribute("type", "text");
   input.setAttribute("name", "project_name");
   input.setAttribute("id", "project_name");
   input.required = true;
-  form.appendChild(input);
+  projectModalForm.appendChild(input);
+
 
   let btnsContainer = document.createElement("div");
   btnsContainer.classList.add("btns-container");
@@ -84,29 +130,9 @@ const createAddProjectForm = () => {
   cancelBtn.classList.add("btn", "btn-danger");
   btnsContainer.appendChild(cancelBtn);
 
-  form.appendChild(btnsContainer);
+  projectModalForm.appendChild(btnsContainer);
 
-  return form;
-};
-
-const createAddProjectFormModal = () => {
-  let projectModal = document.createElement("div");
-  projectModal.setAttribute("id", "project-modal");
-  projectModal.classList.add("project-modal");
-
-  let projectModalContent = document.createElement("div");
-  projectModalContent.classList.add("project-modal-content");
-  
-  let closeBtn = document.createElement("span");
-  closeBtn.classList.add("modal-close", "material-symbols-outlined");
-  closeBtn.textContent = " close";
-  projectModalContent.appendChild(closeBtn);
-
-  let p = document.createElement("p");
-  p.textContent = "Some text in the Modal..";
-  projectModalContent.appendChild(p);
-
-  projectModal.appendChild(projectModalContent);
+  projectModal.appendChild(projectModalForm);
 
   return projectModal;
 }
@@ -129,7 +155,7 @@ const navigationProjects = (projectsTitles) => {
   }
 
   container.appendChild(createAddButton());
-  container.appendChild(createAddProjectForm());
+  // container.appendChild(createAddProjectForm());
 
   container.appendChild(createAddProjectFormModal());
 

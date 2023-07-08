@@ -83,7 +83,7 @@ footer {
   text-align: left;
 }
 
-.project-modal {
+.modal-form {
   display: none;
   position: fixed;
   z-index: 1;
@@ -96,7 +96,7 @@ footer {
   background-color: rgba(0,0,0,0.4);
 }
 
-.project-modal-content {
+.modal-form-content {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
@@ -156,12 +156,6 @@ footer {
   margin: 20px;
 }
 
-// maybe delete after
-.task-form {
-  display: none;
-  flex-direction: column;
-  padding: 10px;
-}
 
 @media (max-width: 600px) {
   $content-width: 95vw;

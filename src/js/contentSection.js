@@ -73,76 +73,13 @@ const createAddTaskButton = () => {
   return btn;
 };
 
-const createAddTaskForm = () => {
-  let form = document.createElement("form");
-  form.setAttribute("id", "task-form");
-  form.classList.add("task-form");
-
-  let label = document.createElement("label");
-  label.setAttribute("for", "task_title");
-  label.textContent = "*Title:";
-  form.appendChild(label);
-
-  let input = document.createElement("input");
-  input.setAttribute("type", "text");
-  input.setAttribute("name", "task_title");
-  input.setAttribute("id", "task_title");
-  input.required = true;
-  form.appendChild(input);
-
-  label = document.createElement("label");
-  label.setAttribute("for", "task_details");
-  label.textContent = "Details:";
-  form.appendChild(label);
-
-  input = document.createElement("input");
-  input.setAttribute("type", "text");
-  input.setAttribute("name", "task_details");
-  input.setAttribute("id", "task_details");
-  form.appendChild(input);
-
-  label = document.createElement("label");
-  label.setAttribute("for", "task_date");
-  label.textContent = "Date:";
-  form.appendChild(label);
-
-  input = document.createElement("input");
-  input.setAttribute("type", "date");
-  input.setAttribute("name", "task_date");
-  input.setAttribute("id", "task_date");
-  form.appendChild(input);
-
-  let btnsContainer = document.createElement("div");
-  btnsContainer.classList.add("btns-container");
-
-  let submitBtn = document.createElement("button");
-  // "submit" submits the form and refreshes page, but this specific application may not need to submit to a real database
-  // if no real database, you can set type = "button" to stop refreshes
-  submitBtn.setAttribute("type", "button");
-  submitBtn.setAttribute("id", "submit-task-button");
-  submitBtn.textContent = "Submit";
-  submitBtn.classList.add("btn", "btn-success");
-  btnsContainer.appendChild(submitBtn);
-
-  let cancelBtn = document.createElement("button");
-  cancelBtn.setAttribute("id", "cancel-task-button");
-  cancelBtn.setAttribute("type", "button");
-  cancelBtn.textContent = "Cancel";
-  cancelBtn.classList.add("btn", "btn-danger");
-  btnsContainer.appendChild(cancelBtn);
-
-  form.appendChild(btnsContainer);
-
-  return form;
-};
-
 const createAddTaskFormModal = () => {
   let taskModal = document.createElement("div");
-  taskModal.classList.add("project-modal");
+  taskModal.classList.add("modal-form");
   taskModal.setAttribute("id", "task-form");
 
   let taskModalForm = document.createElement("form");
-  taskModalForm.classList.add("project-modal-content");
+  taskModalForm.classList.add("modal-form-content");
 
   let label = document.createElement("label");
   label.setAttribute("for", "task_title");

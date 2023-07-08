@@ -50,11 +50,11 @@ const createAddButton = () => {
 
 const createAddProjectFormModal = () => {
   let projectModal = document.createElement("div");
-  projectModal.classList.add("project-modal");
+  projectModal.classList.add("modal-form");
 
   let projectModalForm = document.createElement("form");
   projectModal.setAttribute("id", "project-form");
-  projectModalForm.classList.add("project-modal-content");
+  projectModalForm.classList.add("modal-form-content");
   
   let label = document.createElement("label");
   label.setAttribute("for", "project_name");

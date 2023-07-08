@@ -220,10 +220,11 @@ const addAddTaskFormEventListeners = () => {
   let taskDetails = document.getElementById("task_details");
   let taskDate = document.getElementById("task_date");
 
+  
   addBtn.addEventListener("click", (event) => {
     form.style.display = "flex";
-    addBtn.style.display = "none";
     taskTitle.focus();
+
   });
 
   submitBtn.addEventListener("click", (event) => {

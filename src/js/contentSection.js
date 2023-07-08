@@ -35,7 +35,6 @@ const createTaskItem = (title, description, dueDate, project) => {
   textContainer.appendChild(taskDescription);
   container.appendChild(textContainer);
 
-  // intended for dueDate
   let div = document.createElement("div");
   div.classList.add("smallest-font", "task-due-date");
   div.textContent = dueDate;

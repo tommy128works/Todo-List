@@ -1,6 +1,3 @@
-// for now, add Project heading and 1 dummy project for UI
-// maybe dummy project is default project
-
 const createButton = (title) => {
   let btn = document.createElement("button");
   btn.classList.add(
@@ -92,6 +89,30 @@ const createAddProjectForm = () => {
   return form;
 };
 
+const createAddProjectFormModal = () => {
+  let projectModal = document.createElement("div");
+  projectModal.setAttribute("id", "project-modal");
+  projectModal.classList.add("project-modal");
+
+  let projectModalContent = document.createElement("div");
+  projectModalContent.classList.add("project-modal-content");
+  
+  let closeBtn = document.createElement("span");
+  closeBtn.classList.add("modal-close", "material-symbols-outlined");
+  closeBtn.textContent = " close";
+  projectModalContent.appendChild(closeBtn);
+
+  let p = document.createElement("p");
+  p.textContent = "Some text in the Modal..";
+  projectModalContent.appendChild(p);
+
+  projectModal.appendChild(projectModalContent);
+
+  return projectModal;
+}
+
+
+
 const navigationProjects = (projectsTitles) => {
   let container = document.createElement("div");
   container.classList.add("btn-group-vertical");
@@ -109,6 +130,8 @@ const navigationProjects = (projectsTitles) => {
 
   container.appendChild(createAddButton());
   container.appendChild(createAddProjectForm());
+
+  container.appendChild(createAddProjectFormModal());
 
   return container;
 };

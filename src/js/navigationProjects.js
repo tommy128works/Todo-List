@@ -1,4 +1,4 @@
-const createButton = (title) => {
+const createProjectButton = (title) => {
   let btn = document.createElement("button");
   btn.classList.add(
     "btn",
@@ -22,7 +22,7 @@ const createButton = (title) => {
   btn.appendChild(span);
 
   span = document.createElement("span");
-  span.classList.add("material-symbols-outlined");
+  span.classList.add("material-symbols-outlined", "project-options-icon");
   span.textContent = "more_vert";
   btn.appendChild(span);
 
@@ -55,7 +55,7 @@ const createAddProjectFormModal = () => {
   let projectModalForm = document.createElement("form");
   projectModal.setAttribute("id", "project-form");
   projectModalForm.classList.add("modal-form-content");
-  
+
   let label = document.createElement("label");
   label.setAttribute("for", "project_name");
   label.textContent = "*Project Name:";
@@ -67,7 +67,6 @@ const createAddProjectFormModal = () => {
   input.setAttribute("id", "project_name");
   input.required = true;
   projectModalForm.appendChild(input);
-
 
   let btnsContainer = document.createElement("div");
   btnsContainer.classList.add("btns-container");
@@ -92,7 +91,7 @@ const createAddProjectFormModal = () => {
   projectModal.appendChild(projectModalForm);
 
   return projectModal;
-}
+};
 
 const navigationProjects = (projectsTitles) => {
   let container = document.createElement("div");
@@ -105,7 +104,7 @@ const navigationProjects = (projectsTitles) => {
 
   if (projectsTitles.length > 0) {
     for (let i = 0; i < projectsTitles.length; i++) {
-      container.appendChild(createButton(projectsTitles[i]));
+      container.appendChild(createProjectButton(projectsTitles[i]));
     }
   }
 

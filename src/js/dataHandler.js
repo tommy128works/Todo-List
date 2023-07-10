@@ -145,6 +145,7 @@ const loadPage = (currentPage) => {
   addNavigationButtonsEventListeners();
   addIsCompleteIconEventListeners();
   addFavouriteIconEventListeners();
+  addTaskOptionsEventListeners();
 };
 
 const onStartUp = () => {
@@ -220,11 +221,9 @@ const addAddTaskFormEventListeners = () => {
   let taskDetails = document.getElementById("task_details");
   let taskDate = document.getElementById("task_date");
 
-  
   addBtn.addEventListener("click", (event) => {
     form.style.display = "flex";
     taskTitle.focus();
-
   });
 
   submitBtn.addEventListener("click", (event) => {
@@ -351,6 +350,20 @@ const addFavouriteIconEventListeners = () => {
         element.textContent = "stars";
       }
     });
+  });
+};
+
+const addTaskOptionsEventListeners = () => {
+  let icons = document.querySelectorAll(".task-options-icon");
+
+  icons.forEach((element) => {
+    // first display buttons
+    
+
+    // turn on eventlisteners for moreoptions > can create new function to add each specific button's event
+
+    // make code for edit and delete option
+
   });
 };
 

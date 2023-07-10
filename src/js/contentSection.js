@@ -7,7 +7,6 @@ const createTitle = (currentPage) => {
   return div;
 };
 
-// need to add current page for project but still work with task filters
 const createTaskItem = (title, description, dueDate, project) => {
   let container = document.createElement("span");
   container.classList.add("task-item");
@@ -41,15 +40,24 @@ const createTaskItem = (title, description, dueDate, project) => {
   container.appendChild(div);
 
   span = document.createElement("span");
-  span.classList.add("material-symbols-outlined", "favourite-icon",
-  "prevent-select");
+  span.classList.add(
+    "material-symbols-outlined",
+    "favourite-icon",
+    "prevent-select"
+  );
   container.appendChild(span);
 
-  // intended for editing
+  let optionsContainer = document.createElement("div");
+  optionsContainer.classList.add("options-container");
+
   span = document.createElement("span");
-  span.classList.add("material-symbols-outlined");
+  span.classList.add("material-symbols-outlined", "task-options-icon");
   span.textContent = "more_vert";
-  container.appendChild(span);
+  optionsContainer.appendChild(span);
+
+  optionsContainer.appendChild(createTaskOptions());
+
+  container.appendChild(optionsContainer);
 
   return container;
 };
@@ -139,8 +147,24 @@ const createAddTaskFormModal = () => {
   taskModal.appendChild(taskModalForm);
 
   return taskModal;
+};
 
-}
+const createTaskOptions = () => {
+  let container = document.createElement("div");
+  container.classList.add("task-options")
+
+  let editBtn = document.createElement("button");
+  editBtn.classList.add("btn", "btn-warning");
+  editBtn.textContent = "Edit";
+  container.appendChild(editBtn);
+
+  let deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("btn", "btn-warning");
+  deleteBtn.textContent = "Delete";
+  container.appendChild(deleteBtn);
+
+  return container;
+};
 
 const contentSection = (currentPage, tasksList) => {
   let container = document.createElement("div");
@@ -157,6 +181,7 @@ const contentSection = (currentPage, tasksList) => {
         tasksList[i].project
       )
     );
+    
   }
 
   if (
@@ -168,8 +193,8 @@ const contentSection = (currentPage, tasksList) => {
   ) {
     container.appendChild(createAddTaskButton());
     container.appendChild(createAddTaskFormModal());
-
   }
+
 
   return container;
 };

@@ -222,7 +222,7 @@ const addAddTaskButtonEventListeners = () => {
     form.style.display = "flex";
     taskTitle.focus();
   });
-}
+};
 
 const addAddTaskFormEventListeners = () => {
   let form = document.getElementById("task-form");
@@ -388,14 +388,19 @@ const addTaskOptionsEventListeners = () => {
       form.style.display = "flex";
       taskTitle.focus();
 
-      // fill in input values using existing data from projectsArray
-      // need to find specific task index in projectsArray 
-      // task item container has data-project and data-task to help find indices
-      let currentProject = element.parentElement.nodeName;
+      let currentProject = element.parentElement.parentElement.dataset.project;
+      let currentTask = element.parentElement.parentElement.dataset.task;
+      let projectIndex = projectsArray.findIndex(
+        (project) => project.title === currentProject
+      );
+      let taskIndex = projectsArray[projectIndex].toDos.findIndex(
+        (task) => task.title === currentTask
+      );
 
-      console.log(currentProject);
-
-
+      taskTitle.value = projectsArray[projectIndex].toDos[taskIndex].title;
+      taskDetails.value =
+        projectsArray[projectIndex].toDos[taskIndex].description;
+      taskDate.value = projectsArray[projectIndex].toDos[taskIndex].dueDate;
 
       // careful about existing eventlisteners hmmm
       // maybe pass an argument that allows eventlisteners to determine if it is adding a new task or updating an existing one
@@ -403,19 +408,11 @@ const addTaskOptionsEventListeners = () => {
       // on submit, replace task in projectsArray and update storage and page
 
       // close form on submit
-    })
+    });
 
-    deleteBtn.addEventListener("click", (event) => {
-      
-    })
-    
+    deleteBtn.addEventListener("click", (event) => {});
 
     // make code for edit and delete option
-
-
-
-
-
   });
 };
 

@@ -51,7 +51,11 @@ const createTaskItem = (title, description, dueDate, project) => {
   optionsContainer.classList.add("options-container");
 
   span = document.createElement("span");
-  span.classList.add("material-symbols-outlined", "task-options-icon", "cursor-pointer");
+  span.classList.add(
+    "material-symbols-outlined",
+    "task-options-icon",
+    "cursor-pointer"
+  );
   span.textContent = "more_vert";
   optionsContainer.appendChild(span);
 
@@ -151,7 +155,7 @@ const createAddTaskFormModal = () => {
 
 const createTaskOptions = () => {
   let container = document.createElement("div");
-  container.classList.add("task-options")
+  container.classList.add("task-options");
 
   let editBtn = document.createElement("button");
   editBtn.classList.add("btn", "btn-warning");
@@ -181,7 +185,6 @@ const contentSection = (currentPage, tasksList) => {
         tasksList[i].project
       )
     );
-    
   }
 
   if (
@@ -194,7 +197,6 @@ const contentSection = (currentPage, tasksList) => {
     container.appendChild(createAddTaskButton());
   }
   container.appendChild(createAddTaskFormModal());
-
 
   return container;
 };

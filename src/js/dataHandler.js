@@ -137,9 +137,10 @@ const loadPage = (currentPage) => {
       currentPage === "Next 7 Days"
     )
   ) {
-    addAddTaskFormEventListeners();
+    addAddTaskButtonEventListeners();
   }
 
+  addAddTaskFormEventListeners();
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
   addNavigationButtonsEventListeners();
@@ -212,19 +213,24 @@ const addAddProjectFormEventListeners = () => {
   });
 };
 
-const addAddTaskFormEventListeners = () => {
+const addAddTaskButtonEventListeners = () => {
   let addBtn = document.getElementById("add-task-button");
-  let submitBtn = document.getElementById("submit-task-button");
-  let cancelBtn = document.getElementById("cancel-task-button");
   let form = document.getElementById("task-form");
   let taskTitle = document.getElementById("task_title");
-  let taskDetails = document.getElementById("task_details");
-  let taskDate = document.getElementById("task_date");
 
   addBtn.addEventListener("click", (event) => {
     form.style.display = "flex";
     taskTitle.focus();
   });
+}
+
+const addAddTaskFormEventListeners = () => {
+  let form = document.getElementById("task-form");
+  let taskTitle = document.getElementById("task_title");
+  let taskDetails = document.getElementById("task_details");
+  let taskDate = document.getElementById("task_date");
+  let submitBtn = document.getElementById("submit-task-button");
+  let cancelBtn = document.getElementById("cancel-task-button");
 
   submitBtn.addEventListener("click", (event) => {
     let currentProject = document.getElementById("content-title").textContent;
@@ -251,7 +257,6 @@ const addAddTaskFormEventListeners = () => {
       loadPage(currentProject);
 
       form.style.display = "none";
-      addBtn.style.display = "flex";
       taskTitle.value = "";
       taskDetails.value = "";
       taskDate.value = "";
@@ -260,7 +265,6 @@ const addAddTaskFormEventListeners = () => {
 
   cancelBtn.addEventListener("click", (event) => {
     form.style.display = "none";
-    addBtn.style.display = "flex";
     taskTitle.value = "";
     taskDetails.value = "";
     taskDate.value = "";
@@ -356,6 +360,13 @@ const addFavouriteIconEventListeners = () => {
 const addTaskOptionsEventListeners = () => {
   let icons = document.querySelectorAll(".task-options-icon");
 
+  let form = document.getElementById("task-form");
+  let taskTitle = document.getElementById("task_title");
+  let taskDetails = document.getElementById("task_details");
+  let taskDate = document.getElementById("task_date");
+  let submitBtn = document.getElementById("submit-task-button");
+  let cancelBtn = document.getElementById("cancel-task-button");
+
   icons.forEach((element) => {
     let popup = element.nextSibling;
 
@@ -369,9 +380,41 @@ const addTaskOptionsEventListeners = () => {
       }
     });
 
-    // turn on eventlisteners for moreoptions > can create new function to add each specific button's event
+    let editBtn = element.nextSibling.firstElementChild;
+    let deleteBtn = editBtn.nextSibling;
+
+    editBtn.addEventListener("click", (event) => {
+      // open add new task form
+      form.style.display = "flex";
+      taskTitle.focus();
+
+      // fill in input values using existing data from projectsArray
+      // need to find specific task index in projectsArray 
+      // task item container has data-project and data-task to help find indices
+      let currentProject = element.parentElement.nodeName;
+
+      console.log(currentProject);
+
+
+
+      // careful about existing eventlisteners hmmm
+      // maybe pass an argument that allows eventlisteners to determine if it is adding a new task or updating an existing one
+
+      // on submit, replace task in projectsArray and update storage and page
+
+      // close form on submit
+    })
+
+    deleteBtn.addEventListener("click", (event) => {
+      
+    })
+    
 
     // make code for edit and delete option
+
+
+
+
 
   });
 };

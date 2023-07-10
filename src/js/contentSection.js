@@ -192,8 +192,8 @@ const contentSection = (currentPage, tasksList) => {
     )
   ) {
     container.appendChild(createAddTaskButton());
-    container.appendChild(createAddTaskFormModal());
   }
+  container.appendChild(createAddTaskFormModal());
 
 
   return container;

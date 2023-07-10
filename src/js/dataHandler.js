@@ -152,7 +152,7 @@ const onStartUp = () => {
   checkStorageAvailability();
 
   // for development purpose only
-  // storeSampleData();
+  storeSampleData();
 
   if (Object.keys(localStorage).length > 0) {
     projectsArray = retrieveProjectsArrayFromStorage();
@@ -381,6 +381,17 @@ const addTaskOptionsEventListeners = () => {
       }
     });
 
+    let currentPage =
+            document.getElementById("content-title").textContent;
+    let currentProject = element.parentElement.parentElement.dataset.project;
+    let currentTask = element.parentElement.parentElement.dataset.task;
+    let projectIndex = projectsArray.findIndex(
+      (project) => project.title === currentProject
+    );
+    let taskIndex = projectsArray[projectIndex].toDos.findIndex(
+      (task) => task.title === currentTask
+    );
+
     let editBtn = element.nextSibling.firstElementChild;
     let deleteBtn = editBtn.nextSibling;
 
@@ -388,14 +399,6 @@ const addTaskOptionsEventListeners = () => {
       form.style.display = "flex";
       taskTitle.focus();
 
-      let currentProject = element.parentElement.parentElement.dataset.project;
-      let currentTask = element.parentElement.parentElement.dataset.task;
-      let projectIndex = projectsArray.findIndex(
-        (project) => project.title === currentProject
-      );
-      let taskIndex = projectsArray[projectIndex].toDos.findIndex(
-        (task) => task.title === currentTask
-      );
       let initialTaskTitle = projectsArray[projectIndex].toDos[taskIndex].title;
       taskTitle.value = initialTaskTitle;
       taskDetails.value =
@@ -418,12 +421,11 @@ const addTaskOptionsEventListeners = () => {
 
           projectsArray[projectIndex].updateToDo(
             taskIndex,
-            taskTitle.value, taskDetails.value, dueDate
+            taskTitle.value,
+            taskDetails.value,
+            dueDate
           );
           updateStorage(projectsArray);
-
-          let currentPage =
-            document.getElementById("content-title").textContent;
           loadPage(currentPage);
 
           form.style.display = "none";
@@ -450,12 +452,12 @@ const addTaskOptionsEventListeners = () => {
             break;
         }
       });
-
     });
 
-    deleteBtn.addEventListener("click", (event) => {});
-
-    // make code for edit and delete option
+    deleteBtn.addEventListener("click", (event) => {
+      projectsArray[projectIndex].deleteToDo(taskIndex);
+      loadPage(currentPage);
+    });
   });
 };
 

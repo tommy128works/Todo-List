@@ -17,7 +17,7 @@ const createTaskItem = (title, description, dueDate, project) => {
   span.classList.add(
     "material-symbols-outlined",
     "is-complete-icon",
-    "prevent-select"
+    "cursor-pointer"
   );
   container.appendChild(span);
 
@@ -43,7 +43,7 @@ const createTaskItem = (title, description, dueDate, project) => {
   span.classList.add(
     "material-symbols-outlined",
     "favourite-icon",
-    "prevent-select"
+    "cursor-pointer"
   );
   container.appendChild(span);
 
@@ -51,7 +51,7 @@ const createTaskItem = (title, description, dueDate, project) => {
   optionsContainer.classList.add("options-container");
 
   span = document.createElement("span");
-  span.classList.add("material-symbols-outlined", "task-options-icon");
+  span.classList.add("material-symbols-outlined", "task-options-icon", "cursor-pointer");
   span.textContent = "more_vert";
   optionsContainer.appendChild(span);
 

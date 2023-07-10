@@ -357,8 +357,17 @@ const addTaskOptionsEventListeners = () => {
   let icons = document.querySelectorAll(".task-options-icon");
 
   icons.forEach((element) => {
-    // first display buttons
-    
+    let popup = element.nextSibling;
+
+    element.addEventListener("click", (event) => {
+      popup.style.display = "flex";
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!element.contains(event.target)) {
+        popup.style.display = "none";
+      }
+    });
 
     // turn on eventlisteners for moreoptions > can create new function to add each specific button's event
 

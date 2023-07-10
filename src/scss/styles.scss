@@ -29,6 +29,10 @@ footer {
   user-select: none; /* Standard syntax */
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .large-font {
   font-size: 2.5rem;
 }
@@ -136,6 +140,11 @@ footer {
 
 .task-item {
   display: flex;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  
 }
 
 .task-item-text {

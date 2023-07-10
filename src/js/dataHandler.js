@@ -140,7 +140,6 @@ const loadPage = (currentPage) => {
     addAddTaskButtonEventListeners();
   }
 
-  addAddTaskFormEventListeners();
   addToggleSidebarEventListener();
   addAddProjectFormEventListeners();
   addNavigationButtonsEventListeners();
@@ -221,6 +220,8 @@ const addAddTaskButtonEventListeners = () => {
   addBtn.addEventListener("click", (event) => {
     form.style.display = "flex";
     taskTitle.focus();
+
+    addAddTaskFormEventListeners();
   });
 };
 
@@ -384,7 +385,6 @@ const addTaskOptionsEventListeners = () => {
     let deleteBtn = editBtn.nextSibling;
 
     editBtn.addEventListener("click", (event) => {
-      // open add new task form
       form.style.display = "flex";
       taskTitle.focus();
 
@@ -396,18 +396,61 @@ const addTaskOptionsEventListeners = () => {
       let taskIndex = projectsArray[projectIndex].toDos.findIndex(
         (task) => task.title === currentTask
       );
-
-      taskTitle.value = projectsArray[projectIndex].toDos[taskIndex].title;
+      let initialTaskTitle = projectsArray[projectIndex].toDos[taskIndex].title;
+      taskTitle.value = initialTaskTitle;
       taskDetails.value =
         projectsArray[projectIndex].toDos[taskIndex].description;
       taskDate.value = projectsArray[projectIndex].toDos[taskIndex].dueDate;
 
-      // careful about existing eventlisteners hmmm
-      // maybe pass an argument that allows eventlisteners to determine if it is adding a new task or updating an existing one
+      submitBtn.addEventListener("click", (event) => {
+        if (taskTitle.value === "") {
+          alert("Task title cannot be empty!");
+        } else if (
+          checkDuplicates(projectsArray[projectIndex].toDos, taskTitle.value) &&
+          taskTitle.value !== initialTaskTitle
+        ) {
+          alert("Task names must be different");
+        } else {
+          let dueDate = taskDate.value;
+          if (dueDate === "") {
+            dueDate = "No Due Date";
+          }
 
-      // on submit, replace task in projectsArray and update storage and page
+          projectsArray[projectIndex].updateToDo(
+            taskIndex,
+            taskTitle.value, taskDetails.value, dueDate
+          );
+          updateStorage(projectsArray);
 
-      // close form on submit
+          let currentPage =
+            document.getElementById("content-title").textContent;
+          loadPage(currentPage);
+
+          form.style.display = "none";
+          taskTitle.value = "";
+          taskDetails.value = "";
+          taskDate.value = "";
+        }
+      });
+
+      cancelBtn.addEventListener("click", (event) => {
+        form.style.display = "none";
+        taskTitle.value = "";
+        taskDetails.value = "";
+        taskDate.value = "";
+      });
+
+      form.addEventListener("keydown", (event) => {
+        switch (event.key) {
+          case "Enter":
+            submitBtn.click();
+            break;
+          case "Escape":
+            cancelBtn.click();
+            break;
+        }
+      });
+
     });
 
     deleteBtn.addEventListener("click", (event) => {});

@@ -12,8 +12,10 @@ const createProject = (title) => {
 
   const deleteToDo = (index) => toDos.splice(index, 1);
 
-  const updateToDo = (index, toDo) => {
-    project[index] = toDo;
+  const updateToDo = (index, newTitle, newDescription, newDueDate) => {
+    toDos[index].title = newTitle;
+    toDos[index].description = newDescription;
+    toDos[index].dueDate = newDueDate;
   };
 
   return { title, toDos, addToDo, addToDos, deleteToDo, updateToDo };

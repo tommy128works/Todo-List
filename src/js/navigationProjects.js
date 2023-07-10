@@ -21,10 +21,20 @@ const createProjectButton = (title) => {
   span.textContent = title;
   btn.appendChild(span);
 
+  let optionsContainer = document.createElement("div");
+  optionsContainer.classList.add("options-container");
+
   span = document.createElement("span");
-  span.classList.add("material-symbols-outlined", "project-options-icon");
+  span.classList.add(
+    "material-symbols-outlined",
+    "project-options-icon",
+  );
   span.textContent = "more_vert";
-  btn.appendChild(span);
+  optionsContainer.appendChild(span);
+
+  optionsContainer.appendChild(createProjectOptions());
+
+  btn.appendChild(optionsContainer);
 
   return btn;
 };
@@ -92,6 +102,23 @@ const createAddProjectFormModal = () => {
 
   return projectModal;
 };
+
+const createProjectOptions = () => {
+  let container = document.createElement("div");
+  container.classList.add("project-options", "options");
+
+  let editBtn = document.createElement("button");
+  editBtn.classList.add("btn", "btn-warning");
+  editBtn.textContent = "Rename";
+  container.appendChild(editBtn);
+
+  let deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("btn", "btn-warning");
+  deleteBtn.textContent = "Delete";
+  container.appendChild(deleteBtn);
+
+  return container;
+}
 
 const navigationProjects = (projectsTitles) => {
   let container = document.createElement("div");

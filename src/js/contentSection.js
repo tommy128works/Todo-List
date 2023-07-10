@@ -132,7 +132,7 @@ const createAddTaskFormModal = () => {
 
   let submitBtn = document.createElement("button");
   // "submit" submits the form and refreshes page, but this specific application may not need to submit to a real database
-  // if no real database, you can set type = "button" to stop refreshes
+  // if no real database, you can set type = "button" to stop the automatic page refreshes
   submitBtn.setAttribute("type", "button");
   submitBtn.setAttribute("id", "submit-task-button");
   submitBtn.textContent = "Submit";
@@ -155,7 +155,7 @@ const createAddTaskFormModal = () => {
 
 const createTaskOptions = () => {
   let container = document.createElement("div");
-  container.classList.add("task-options");
+  container.classList.add("task-options", "options");
 
   let editBtn = document.createElement("button");
   editBtn.classList.add("btn", "btn-warning");

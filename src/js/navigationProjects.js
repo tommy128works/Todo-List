@@ -25,10 +25,7 @@ const createProjectButton = (title) => {
   optionsContainer.classList.add("options-container");
 
   span = document.createElement("span");
-  span.classList.add(
-    "material-symbols-outlined",
-    "project-options-icon",
-  );
+  span.classList.add("material-symbols-outlined", "project-options-icon");
   span.textContent = "more_vert";
   optionsContainer.appendChild(span);
 
@@ -118,7 +115,7 @@ const createProjectOptions = () => {
   container.appendChild(deleteBtn);
 
   return container;
-}
+};
 
 const navigationProjects = (projectsTitles) => {
   let container = document.createElement("div");

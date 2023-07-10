@@ -146,6 +146,7 @@ const loadPage = (currentPage) => {
   addIsCompleteIconEventListeners();
   addFavouriteIconEventListeners();
   addTaskOptionsEventListeners();
+  addProjectOptionsEventListeners();
 };
 
 const onStartUp = () => {
@@ -168,30 +169,29 @@ const checkDuplicates = (array, string) => {
 
 const addAddProjectFormEventListeners = () => {
   let addBtn = document.getElementById("add-project-button");
+  let form = document.getElementById("project-form");
   let submitBtn = document.getElementById("submit-project-button");
   let cancelBtn = document.getElementById("cancel-project-button");
-  let form = document.getElementById("project-form");
   let projectName = document.getElementById("project_name");
 
   addBtn.addEventListener("click", (event) => {
     form.style.display = "block";
     projectName.focus();
-  });
 
-  submitBtn.addEventListener("click", (event) => {
-    if (projectName.value === "") {
-      alert("Project name cannot be empty!");
-    } else if (checkDuplicates(projectsArray, projectName.value)) {
-      alert("Project names must be different");
-    } else {
-      projectsArray.push(createProject(projectName.value));
-      updateStorage(projectsArray);
-      loadPage(projectName.value);
+    submitBtn.addEventListener("click", (event) => {
+      if (projectName.value === "") {
+        alert("Project name cannot be empty!");
+      } else if (checkDuplicates(projectsArray, projectName.value)) {
+        alert("Project names must be different");
+      } else {
+        projectsArray.push(createProject(projectName.value));
+        updateStorage(projectsArray);
+        loadPage(projectName.value);
 
-      form.style.display = "none";
-      addBtn.style.display = "flex";
-      projectName.value = "";
-    }
+        form.style.display = "none";
+        projectName.value = "";
+      }
+    });
   });
 
   cancelBtn.addEventListener("click", (event) => {
@@ -381,8 +381,7 @@ const addTaskOptionsEventListeners = () => {
       }
     });
 
-    let currentPage =
-            document.getElementById("content-title").textContent;
+    let currentPage = document.getElementById("content-title").textContent;
     let currentProject = element.parentElement.parentElement.dataset.project;
     let currentTask = element.parentElement.parentElement.dataset.task;
     let projectIndex = projectsArray.findIndex(
@@ -456,9 +455,82 @@ const addTaskOptionsEventListeners = () => {
 
     deleteBtn.addEventListener("click", (event) => {
       projectsArray[projectIndex].deleteToDo(taskIndex);
+      updateStorage(projectsArray);
       loadPage(currentPage);
     });
   });
+};
+const addProjectOptionsEventListeners = () => {
+  let icons = document.querySelectorAll(".project-options-icon");
+
+  icons.forEach((element) => {
+    let popup = element.nextSibling;
+
+    let form = document.getElementById("project-form");
+    let submitBtn = document.getElementById("submit-project-button");
+    // let cancelBtn = document.getElementById("cancel-project-button");
+    let projectName = document.getElementById("project_name");
+
+    element.addEventListener("click", (event) => {
+      popup.style.display = "flex";
+      event.stopPropagation();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!element.contains(event.target)) {
+        popup.style.display = "none";
+      }
+    });
+
+    let currentPage = document.getElementById("content-title").textContent;
+    let currentProject = element.parentElement.parentElement.dataset.title;
+    let projectIndex = projectsArray.findIndex(
+      (project) => project.title === currentProject
+    );
+
+    let renameBtn = element.nextSibling.firstElementChild;
+    let deleteBtn = renameBtn.nextSibling;
+
+    renameBtn.addEventListener("click", (event) => {
+      form.style.display = "flex";
+      projectName.focus();
+      event.stopPropagation();
+
+      let initialProjectName = projectsArray[projectIndex].title;
+      projectName.value = initialProjectName;
+
+      submitBtn.addEventListener("click", (event) => {
+        if (projectName.value === "") {
+          alert("Project name cannot be empty!");
+        } else if (
+          checkDuplicates(projectsArray, projectName.value) &&
+          projectName.value !== initialProjectName
+        ) {
+          alert("Project names must be different");
+        } else {
+          projectsArray[projectIndex].title = projectName.value;
+          updateStorage(projectsArray);
+          loadPage(currentPage);
+
+          form.style.display = "none";
+          projectName.value = "";
+        }
+      });
+    });
+
+    deleteBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      projectsArray.splice(projectIndex, 1);
+      updateStorage(projectsArray);
+
+      if (currentPage === currentProject) {
+        loadPage("All Tasks");
+      } else {
+        loadPage(currentPage);
+      }
+    });
+  });
+
 };
 
 export { onStartUp };

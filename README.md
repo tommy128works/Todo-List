@@ -2,7 +2,7 @@
 
 ![Screenshot of the App Overview](/src/assets/screenshots/Todo_List_Showcase.png)
 
-// DEMO LINK
+[View DEMO Here!](https://tommy128works.github.io/Todo-List/)
 
 ## Project Description
 
@@ -41,7 +41,7 @@ npm install
 npm start
 ```
 
-Otherwise, please check out the DEMO!
+Otherwise, please check out the [DEMO!](https://tommy128works.github.io/Todo-List/)
 
 ## How to Use the Project
 

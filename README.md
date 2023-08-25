@@ -1,16 +1,61 @@
-# Restaurant-Page
+# Todo List
 
-This restaurant page has been changed into a sapling store that sells saplings and offers installation services.
+## Project Description
 
-This was a learning exercise for using Webpacks and ES6 Modules to generate the entire contents of the restaurant page.
+Keep track of yours tasks using this Todo List!
 
-I have learned that Webpacks have many uses for development and production. A feature I found useful
-was webpack-dev-server which automatically refreshed the page.
-I have also found ES6 Modules to be a useful tool in reusing code between files and projects.
+[Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) stores the user's data on the browser itself. This means your projects and tasks will still be there after you close and re-open the page! 
 
-Credits:
+> [!NOTE]
+> Web Storage API stores data on the specific user's browser meaning the user's data will not show up if they open the app on another computer.
 
-Github icon: https://www.flaticon.com/free-icons/github"
+This project's functionality relied heavily on JavaScript EventListeners. ES6 Modules were implemented to better organize the implementation of the code.
 
-This is a guided project by The Odin Project (https://www.theodinproject.com/)
-Reference link: ///
+Overall, this was a fantastic learning exercise that made me more familiar with EventListeners, factory functions, and writing cleaner code.
+
+Technologies Used:
+- Web Storage API
+- Webpack
+- JavaScript
+- CSS and SASS
+- Jest Testing
+- Bootstrap
+
+Notable Coding Techniques Used:
+- ES6 Modules
+- HTML Forms
+- JavaScript Form Validation
+- JavaScript EventListeners
+- JavaScript Factory Functions
+
+## How to Run Project Locally
+
+To run this project on your own computer, please fork the repository, then run the following commands in your command line:
+```
+npm install
+npm start
+```
+
+Otherwise, please check out the DEMO!
+
+## How to Use the Project
+
+You can create a new project by clicking the "Add Project" button!
+
+// Screenshot of projects sidebar
+
+You can create a new task by clicking the "Add New Task" button!
+
+// Screenshot of tasks
+
+These tasks can be favourited, or crossed out for completion!
+
+// Show various UI indications on tasks
+
+Use the different filtering options to view all tasks, or tasks that are nearing their deadline.
+
+// Show screenshot of navigation bar
+
+## Credits
+
+[This project](https://www.theodinproject.com/lessons/node-path-javascript-todo-list) is from The Odin Project's [Full Stack JavaScript](https://www.theodinproject.com/paths/full-stack-javascript) course.

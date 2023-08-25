@@ -153,7 +153,7 @@ const onStartUp = () => {
   checkStorageAvailability();
 
   // for development purpose only
-  storeSampleData();
+  // storeSampleData();
 
   if (Object.keys(localStorage).length > 0) {
     projectsArray = retrieveProjectsArrayFromStorage();

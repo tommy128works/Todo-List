@@ -64,6 +64,7 @@ footer {
 .main-container {
   display: flex;
   flex: 1;
+  padding: 10px;
 }
 
 .sidebar-section {
@@ -183,9 +184,11 @@ footer {
 @media (max-width: 600px) {
   $content-width: 95vw;
 
+
   .main-container {
     flex-wrap: wrap;
     justify-content: space-around;
+
   }
 
   .sidebar-section {

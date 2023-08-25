@@ -1,5 +1,9 @@
 # Todo List
 
+![Screenshot of the App Overview](/src/assets/screenshots/Todo_List_Showcase.png)
+
+// DEMO LINK
+
 ## Project Description
 
 Keep track of yours tasks using this Todo List!
@@ -9,7 +13,8 @@ Keep track of yours tasks using this Todo List!
 > [!NOTE]
 > Web Storage API stores data on the specific user's browser meaning the user's data will not show up if they open the app on another computer.
 
-This project's functionality relied heavily on JavaScript EventListeners. ES6 Modules were implemented to better organize the implementation of the code.
+This project's functionality relied heavily on JavaScript EventListeners. 
+ES6 Modules were implemented to improve organization and readability of the code.
 
 Overall, this was a fantastic learning exercise that made me more familiar with EventListeners, factory functions, and writing cleaner code.
 
@@ -42,19 +47,16 @@ Otherwise, please check out the DEMO!
 
 You can create a new project by clicking the "Add Project" button!
 
-// Screenshot of projects sidebar
+![Screenshot of the Add Project button](/src/assets/screenshots/Todo_List_Add_Project.png)
 
 You can create a new task by clicking the "Add New Task" button!
-
-// Screenshot of tasks
-
 These tasks can be favourited, or crossed out for completion!
 
-// Show various UI indications on tasks
+![Screenshot of the Add Task button. Default tasks displayed demonstrating the appearance of a completed task and a favourited task.](/src/assets/screenshots/Todo_List_Add_Task.png)
 
 Use the different filtering options to view all tasks, or tasks that are nearing their deadline.
 
-// Show screenshot of navigation bar
+![Screenshot of the Task Filter buttons](/src/assets/screenshots/Todo_List_Task_Filter.png)
 
 ## Credits
 

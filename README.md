@@ -6,7 +6,7 @@
 
 ## Project Description
 
-Keep track of yours tasks using this Todo List!
+Keep track of your tasks using this Todo List!
 
 [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) stores the user's data on the browser itself. This means your projects and tasks will still be there after you close and re-open the page! 
 
